@@ -22,8 +22,9 @@ export default function Index() {
     }
   }
   return (
-    <View style={styles.container}>
-      <Text>Pokedex</Text>
+    <>
+      <View style={styles.container}>{/* <Text>Pokedex</Text> */}</View>
+
       <ScrollView>
         {pokemon.map((poke) => {
           return (
@@ -33,7 +34,7 @@ export default function Index() {
           );
         })}
       </ScrollView>
-    </View>
+    </>
   );
 }
 

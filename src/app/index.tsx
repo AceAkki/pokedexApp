@@ -4,6 +4,15 @@ import { Image, ScrollView, StyleSheet, Text, View } from "react-native";
 interface Pokemon {
   name: string;
   image: string;
+  imageBack: string;
+  types: PokemonType[];
+}
+
+interface PokemonType {
+  type: {
+    name: string;
+    url: string;
+  };
 }
 
 export default function Index() {
@@ -28,6 +37,8 @@ export default function Index() {
             return {
               name: pokemon.name,
               image: dets.sprites.front_default,
+              imageBack: dets.sprites.back_default,
+              types: dets.types,
             };
           }),
         );
@@ -45,11 +56,22 @@ export default function Index() {
         {pokemon.map((poke) => {
           return (
             <View key={poke.name}>
-              <Text>{poke.name}</Text>
-              <Image
-                source={{ uri: poke.image }}
-                style={{ width: 100, height: 100 }}
-              />
+              <Text style={styles.name}>{poke.name}</Text>
+              <Text style={styles.type}>{poke.types[0].type.name}</Text>
+              <View
+                style={{
+                  flexDirection: "row",
+                }}
+              >
+                <Image
+                  source={{ uri: poke.image }}
+                  style={{ width: 100, height: 100 }}
+                />
+                <Image
+                  source={{ uri: poke.imageBack }}
+                  style={{ width: 100, height: 100 }}
+                />
+              </View>
             </View>
           );
         })}
@@ -63,5 +85,14 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
+  },
+  name: {
+    fontSize: 20,
+    fontWeight: 800,
+    textTransform: "capitalize",
+  },
+  type: {
+    fontSize: 18,
+    fontWeight: 300,
   },
 });

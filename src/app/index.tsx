@@ -1,8 +1,13 @@
 import { useEffect, useState } from "react";
 import { ScrollView, StyleSheet, Text, View } from "react-native";
 
+interface Pokemon {
+  name: string;
+  url: string;
+}
+
 export default function Index() {
-  let [pokemon, setPokemon] = useState([]);
+  let [pokemon, setPokemon] = useState<Pokemon[]>([]);
 
   useEffect(() => {
     fetchPokemons();
@@ -28,7 +33,7 @@ export default function Index() {
       <ScrollView>
         {pokemon.map((poke) => {
           return (
-            <View key={poke.key}>
+            <View key={poke.name}>
               <Text>{poke.name}</Text>
             </View>
           );

@@ -1,3 +1,4 @@
+import { Link } from "expo-router";
 import { useEffect, useState } from "react";
 import { Image, ScrollView, StyleSheet, Text, View } from "react-native";
 
@@ -82,35 +83,40 @@ export default function Index() {
         {pokemon.map((poke) => {
           let type = poke.types[0].type.name;
           return (
-            <View
+            <Link
               key={poke.name}
-              style={{
-                backgroundColor: colorType[type as keyof typeof colorType] + 50,
-                paddingHorizontal: 25,
-                paddingVertical: 20,
-                borderStyle: "solid",
-                borderWidth: 1,
-                borderColor: "#000",
-                borderRadius: 20,
-              }}
+              href={{ pathname: "/details", params: { name: poke.name } }}
             >
-              <Text style={styles.name}>{poke.name}</Text>
-              <Text style={styles.type}>{type}</Text>
               <View
                 style={{
-                  flexDirection: "row",
+                  backgroundColor:
+                    colorType[type as keyof typeof colorType] + 50,
+                  paddingHorizontal: 25,
+                  paddingVertical: 20,
+                  borderStyle: "solid",
+                  borderWidth: 1,
+                  borderColor: "#000",
+                  borderRadius: 20,
                 }}
               >
-                <Image
-                  source={{ uri: poke.image }}
-                  style={{ width: 100, height: 100 }}
-                />
-                <Image
-                  source={{ uri: poke.imageBack }}
-                  style={{ width: 100, height: 100 }}
-                />
+                <Text style={styles.name}>{poke.name}</Text>
+                <Text style={styles.type}>{type}</Text>
+                <View
+                  style={{
+                    flexDirection: "row",
+                  }}
+                >
+                  <Image
+                    source={{ uri: poke.image }}
+                    style={{ width: 150, height: 150 }}
+                  />
+                  <Image
+                    source={{ uri: poke.imageBack }}
+                    style={{ width: 150, height: 150 }}
+                  />
+                </View>
               </View>
-            </View>
+            </Link>
           );
         })}
       </ScrollView>
@@ -128,11 +134,13 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: 800,
     textTransform: "capitalize",
+    textAlign: "center",
   },
   type: {
     fontSize: 18,
     fontWeight: 400,
     textTransform: "capitalize",
+    textAlign: "center",
     backgroundColor: "#fff",
     color: "#1c1010",
   },

@@ -15,6 +15,27 @@ interface PokemonType {
   };
 }
 
+const colorType = {
+  normal: "#A8A77A",
+  fire: "#EE8130",
+  water: "#6390F0",
+  electric: "#F7D02C",
+  grass: "#7AC74C",
+  ice: "#96D9D6",
+  fighting: "#C22E28",
+  poison: "#A33EA1",
+  ground: "#E2BF65",
+  flying: "#A98FF3",
+  psychic: "#F95587",
+  bug: "#A6B91A",
+  rock: "#B6A136",
+  ghost: "#735797",
+  dragon: "#6F35FC",
+  dark: "#705746",
+  steel: "#B7B7CE",
+  fairy: "#D685AD",
+};
+
 export default function Index() {
   let [pokemon, setPokemon] = useState<Pokemon[]>([]);
 
@@ -52,12 +73,29 @@ export default function Index() {
     <>
       <View style={styles.container}>{/* <Text>Pokedex</Text> */}</View>
 
-      <ScrollView>
+      <ScrollView
+        contentContainerStyle={{
+          gap: 16,
+          padding: 20,
+        }}
+      >
         {pokemon.map((poke) => {
+          let type = poke.types[0].type.name;
           return (
-            <View key={poke.name}>
+            <View
+              key={poke.name}
+              style={{
+                backgroundColor: colorType[type as keyof typeof colorType] + 50,
+                paddingHorizontal: 25,
+                paddingVertical: 20,
+                borderStyle: "solid",
+                borderWidth: 1,
+                borderColor: "#000",
+                borderRadius: 20,
+              }}
+            >
               <Text style={styles.name}>{poke.name}</Text>
-              <Text style={styles.type}>{poke.types[0].type.name}</Text>
+              <Text style={styles.type}>{type}</Text>
               <View
                 style={{
                   flexDirection: "row",
@@ -93,6 +131,9 @@ const styles = StyleSheet.create({
   },
   type: {
     fontSize: 18,
-    fontWeight: 300,
+    fontWeight: 400,
+    textTransform: "capitalize",
+    backgroundColor: "#fff",
+    color: "#1c1010",
   },
 });

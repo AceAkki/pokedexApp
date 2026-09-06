@@ -38,10 +38,11 @@ const colorType = {
 };
 
 export default function Index() {
-  let [pokemon, setPokemon] = useState<Pokemon[]>([]);
+  let [pokemon, setPokemons] = useState<Pokemon[]>([]);
 
   useEffect(() => {
     fetchPokemons();
+    // console.log(pokemon);
   }, []);
 
   async function fetchPokemons() {
@@ -64,7 +65,7 @@ export default function Index() {
             };
           }),
         );
-        setPokemon(detailedPokemons);
+        setPokemons(detailedPokemons);
       }
     } catch (error) {
       console.log(error);

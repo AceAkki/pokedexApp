@@ -36,7 +36,7 @@ export const globalStyles = StyleSheet.create({
     fontWeight: 400,
     textTransform: "capitalize",
     textAlign: "center",
-    backgroundColor: "#fff",
-    color: "#1c1010",
+
+    color: colors.primary,
   },
 });

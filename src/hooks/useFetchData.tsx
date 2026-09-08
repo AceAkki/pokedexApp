@@ -1,6 +1,11 @@
+import type { Pokemon } from "@/types/pokemonType";
 import { useEffect, useState } from "react";
 
-const useFetchData = ({ name, id }) => {
+interface hookType {
+  name?: string;
+  id?: string;
+}
+const useFetchData = ({ name, id }: hookType) => {
   let [pokemons, setPokemons] = useState<Pokemon[]>([]);
   let [pokemon, setPokemon] = useState<Pokemon | null>(null);
 
@@ -9,7 +14,7 @@ const useFetchData = ({ name, id }) => {
     // console.log(pokemon);
   }, []);
 
-  async function fetchPokemons({ name, id }) {
+  async function fetchPokemons({ name, id }: hookType) {
     const hasParam = name || id;
     const url = name
       ? `https://pokeapi.co/api/v2/pokemon/${name}`

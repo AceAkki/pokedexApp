@@ -18,8 +18,13 @@ const Details = () => {
   }
 
   return (
-    <ScrollView>
-      <Text>Details</Text>
+    <ScrollView
+      contentContainerStyle={{
+        backgroundColor: "#fff",
+        borderRadius: 12,
+        padding: 20,
+      }}
+    >
       <Text>{pokemon?.name}</Text>
       <Link href="/" push asChild>
         <Button title="push to sec" />

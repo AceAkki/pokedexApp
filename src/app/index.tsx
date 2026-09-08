@@ -106,11 +106,7 @@ export default function Index() {
                 <View style={{ flexDirection: "row" }}>
                   <Image
                     source={{ uri: poke.image }}
-                    style={{ width: 100, height: 100 }}
-                  />
-                  <Image
-                    source={{ uri: poke.imageBack }}
-                    style={{ width: 100, height: 100 }}
+                    style={globalStyles.image}
                   />
                 </View>
               </View>

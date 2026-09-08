@@ -13,6 +13,12 @@ export const globalStyles = StyleSheet.create({
     padding: 16,
     alignItems: "center",
     justifyContent: "center",
+    width: "100%",
+  },
+  image: {
+    width: "100%",
+    aspectRatio: 1.5,
+    resizeMode: "contain",
   },
   titleText: {
     fontSize: 24,

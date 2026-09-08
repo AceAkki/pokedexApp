@@ -6,7 +6,7 @@ export default function RootLayout() {
       <Stack.Screen
         name="index"
         options={{
-          title: "Home",
+          title: "PokeDex",
         }}
       />
       <Stack.Screen
@@ -15,9 +15,9 @@ export default function RootLayout() {
           title: "Details",
           headerBackButtonDisplayMode: "minimal",
           presentation: "formSheet",
-          sheetAllowedDetents: [0.3, 0.5, 0.7],
+          sheetAllowedDetents: [0.5, 0.9],
           sheetGrabberVisible: true,
-          sheetCornerRadius: 16,
+          sheetCornerRadius: 30,
         })}
       />
     </Stack>

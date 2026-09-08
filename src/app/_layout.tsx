@@ -11,14 +11,13 @@ export default function RootLayout() {
       />
       <Stack.Screen
         name="details"
-        options={({ route }) => ({
-          title: route.params?.name?.toLocaleUpperCase() || "Details",
+        options={() => ({
+          title: "Details",
           headerBackButtonDisplayMode: "minimal",
           presentation: "formSheet",
           sheetAllowedDetents: [0.3, 0.5, 0.7],
           sheetGrabberVisible: true,
           sheetCornerRadius: 16,
-          headerShown: false,
         })}
       />
     </Stack>

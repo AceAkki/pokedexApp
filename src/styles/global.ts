@@ -32,7 +32,7 @@ export const globalStyles = StyleSheet.create({
     alignItems: "flex-start",
   },
   heading: {
-    fontSize: 34,
+    fontSize: 44,
     marginVertical: 10,
     fontFamily: "Inter-Regular",
     fontWeight: 700,

@@ -23,10 +23,10 @@ const indexStyles = StyleSheet.create({
     paddingVertical: 16,
     justifyContent: "center",
     alignItems: "center",
-    margin: 10,
+    margin: 20,
   },
   promptTxt: {
-    fontSize: 24,
+    fontSize: 34,
   },
 });
 

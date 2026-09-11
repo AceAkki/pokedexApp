@@ -8,18 +8,34 @@ export const colors = {
 };
 
 export const globalStyles = StyleSheet.create({
+  bold900: {
+    fontWeight: 900,
+  },
   container: {
     flex: 1,
     backgroundColor: colors.background,
     padding: 16,
     alignItems: "center",
     justifyContent: "center",
-    width: "100%",
+    maxWidth: "100%",
   },
   image: {
     width: "100%",
     aspectRatio: 1.5,
     resizeMode: "contain",
+  },
+  headerContainer: {
+    flex: 1,
+    backgroundColor: colors.background,
+    paddingHorizontal: 16,
+    paddingTop: 20,
+    alignItems: "flex-start",
+  },
+  heading: {
+    fontSize: 34,
+    marginVertical: 10,
+    fontFamily: "Inter-Regular",
+    fontWeight: 700,
   },
   titleText: {
     fontSize: 24,

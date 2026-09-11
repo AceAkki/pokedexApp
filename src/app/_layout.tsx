@@ -7,6 +7,7 @@ export default function RootLayout() {
         name="index"
         options={{
           title: "PokeDex",
+          headerShown: false,
         }}
       />
       <Stack.Screen

@@ -26,7 +26,7 @@ const indexStyles = StyleSheet.create({
     margin: 20,
   },
   promptTxt: {
-    fontSize: 34,
+    fontSize: 30,
   },
 });
 

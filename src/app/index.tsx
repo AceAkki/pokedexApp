@@ -1,4 +1,4 @@
-import { Image, ScrollView, Text, View } from "react-native";
+import { Button, Image, ScrollView, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { globalStyles } from "../styles/global";
 import indexStyles from "./indexStyles";
@@ -33,6 +33,10 @@ export default function Index() {
               Pokemon Master !
             </Text>
           </Text>
+        </View>
+
+        <View>
+          <Button title="Get Started"></Button>
         </View>
       </ScrollView>
     </SafeAreaView>

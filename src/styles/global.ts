@@ -25,7 +25,7 @@ export const globalStyles = StyleSheet.create({
     resizeMode: "contain",
   },
   headerContainer: {
-    flex: 1,
+    width: "100%",
     backgroundColor: colors.background,
     paddingHorizontal: 16,
     paddingTop: 20,

@@ -6,7 +6,13 @@ import indexStyles from "./indexStyles";
 export default function Index() {
   return (
     <SafeAreaView>
-      <ScrollView>
+      <ScrollView
+        contentContainerStyle={{
+          paddingVertical: 20,
+          paddingHorizontal: 16,
+          alignItems: "center",
+        }}
+      >
         <View style={globalStyles.headerContainer}>
           <Text accessibilityRole="header" style={globalStyles.heading}>
             Pokédex

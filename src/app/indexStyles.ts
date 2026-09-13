@@ -6,7 +6,7 @@ const indexStyles = StyleSheet.create({
     paddingVertical: 16,
   },
   image: {
-    flex: 1,
+    // flex: 1,
     borderWidth: 1,
     borderRadius: 16,
     resizeMode: "contain",
@@ -16,14 +16,14 @@ const indexStyles = StyleSheet.create({
     height: 350,
   },
   promptWrap: {
-    flex: 1,
+    // flex: 1,
     borderWidth: 1,
     borderRadius: 16,
     paddingHorizontal: 14,
     paddingVertical: 16,
     justifyContent: "center",
     alignItems: "center",
-    margin: 20,
+    // margin: 20,
   },
   promptTxt: {
     fontSize: 30,

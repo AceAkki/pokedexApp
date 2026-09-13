@@ -36,7 +36,7 @@ export const globalStyles = StyleSheet.create({
     marginVertical: 10,
     fontFamily: "Inter-Regular",
     fontWeight: 700,
-    alignSelf: "flex-start",
+    // alignSelf: "flex-start",
   },
   titleText: {
     fontSize: 24,

@@ -1,5 +1,21 @@
+import { colors } from "@/styles/global";
 import { StyleSheet } from "react-native";
+
 const indexStyles = StyleSheet.create({
+  headerContainer: {
+    width: "100%",
+    backgroundColor: colors.background,
+    paddingHorizontal: 16,
+    paddingTop: 20,
+    alignItems: "flex-start",
+  },
+  heading: {
+    fontSize: 44,
+    marginVertical: 10,
+    fontFamily: "Inter-Regular",
+    fontWeight: 700,
+    // alignSelf: "flex-start",
+  },
   imageContainer: {
     justifyContent: "center",
     alignItems: "center",

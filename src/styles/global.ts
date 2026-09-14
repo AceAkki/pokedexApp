@@ -24,20 +24,7 @@ export const globalStyles = StyleSheet.create({
     aspectRatio: 1.5,
     resizeMode: "contain",
   },
-  headerContainer: {
-    width: "100%",
-    backgroundColor: colors.background,
-    paddingHorizontal: 16,
-    paddingTop: 20,
-    alignItems: "flex-start",
-  },
-  heading: {
-    fontSize: 44,
-    marginVertical: 10,
-    fontFamily: "Inter-Regular",
-    fontWeight: 700,
-    // alignSelf: "flex-start",
-  },
+
   titleText: {
     fontSize: 24,
     fontWeight: "bold",

@@ -1,4 +1,4 @@
-import { Button, Image, ScrollView, Text, View } from "react-native";
+import { Image, Pressable, ScrollView, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { globalStyles } from "../styles/global";
 import indexStyles from "./indexStyles";
@@ -13,8 +13,8 @@ export default function Index() {
           alignItems: "center",
         }}
       >
-        <View style={globalStyles.headerContainer}>
-          <Text accessibilityRole="header" style={globalStyles.heading}>
+        <View style={indexStyles.headerContainer}>
+          <Text accessibilityRole="header" style={indexStyles.heading}>
             Pokédex
           </Text>
         </View>
@@ -42,7 +42,9 @@ export default function Index() {
         </View>
 
         <View>
-          <Button title="Get Started"></Button>
+          <Pressable>
+            <Text>Get Started</Text>
+          </Pressable>
         </View>
       </ScrollView>
     </SafeAreaView>

@@ -25,9 +25,9 @@ const indexStyles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     // margin: 20,
-  },  
+  },
   promptTxt: {
-    fontSize: 35,
+    fontSize: 30,
   },
 });
 

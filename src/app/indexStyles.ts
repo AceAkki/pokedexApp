@@ -34,6 +34,7 @@ const indexStyles = StyleSheet.create({
   promptWrap: {
     // flex: 1,
     width: "100%",
+    backgroundColor:colors.background,
     borderWidth: 1,
     borderRadius: 16,
     paddingHorizontal: 14,

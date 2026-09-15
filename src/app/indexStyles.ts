@@ -10,10 +10,11 @@ const indexStyles = StyleSheet.create({
     alignItems: "flex-start",
   },
   heading: {
-    fontSize: 44,
-    marginVertical: 10,
     fontFamily: "Inter-Regular",
+    fontSize: 44,
     fontWeight: 700,
+    color: colors.primary,
+    marginVertical: 10,
     // alignSelf: "flex-start",
   },
   imageContainer: {
@@ -34,7 +35,7 @@ const indexStyles = StyleSheet.create({
   promptWrap: {
     // flex: 1,
     width: "100%",
-    backgroundColor:colors.background,
+    backgroundColor: colors.background,
     borderWidth: 1,
     borderRadius: 16,
     paddingHorizontal: 14,

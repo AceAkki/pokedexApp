@@ -41,7 +41,6 @@ export const globalStyles = StyleSheet.create({
     fontWeight: 400,
     textTransform: "capitalize",
     textAlign: "center",
-
     color: colors.primary,
   },
 });

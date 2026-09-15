@@ -1,9 +1,11 @@
+import { useRouter } from "expo-router";
 import { Image, Pressable, ScrollView, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { globalStyles } from "../styles/global";
 import indexStyles from "./indexStyles";
 
 export default function Index() {
+  const router = useRouter();
   return (
     <SafeAreaView>
       <ScrollView
@@ -42,7 +44,7 @@ export default function Index() {
         </View>
 
         <View>
-          <Pressable>
+          <Pressable onPress={() => router.push("/details")}>
             <Text>Get Started</Text>
           </Pressable>
         </View>

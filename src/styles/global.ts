@@ -35,6 +35,7 @@ export const globalStyles = StyleSheet.create({
     fontWeight: 800,
     textTransform: "capitalize",
     textAlign: "center",
+    color: colors.secondary,
   },
   type: {
     fontSize: 18,

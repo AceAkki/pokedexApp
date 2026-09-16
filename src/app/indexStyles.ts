@@ -28,8 +28,6 @@ const indexStyles = StyleSheet.create({
     borderWidth: 1,
     borderRadius: 16,
     resizeMode: "cover",
-    alignItems: "center",
-    justifyContent: "center",
     width: "100%",
     height: 350,
   },

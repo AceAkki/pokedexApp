@@ -28,7 +28,7 @@ const indexStyles = StyleSheet.create({
     borderWidth: 1,
     borderRadius: 16,
     resizeMode: "cover",
-    width: "100%",
+    // width: "100%",
     height: 350,
   },
   promptWrap: {

@@ -5,7 +5,7 @@ const indexStyles = StyleSheet.create({
   headerContainer: {
     width: "100%",
     backgroundColor: colors.background,
-    paddingHorizontal: 16,
+    paddingHorizontal: 5,
     paddingTop: 20,
     alignItems: "flex-start",
   },
@@ -21,15 +21,16 @@ const indexStyles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     paddingVertical: 16,
+    width: "100%",
   },
   image: {
     // flex: 1,
     borderWidth: 1,
     borderRadius: 16,
-    resizeMode: "contain",
+    resizeMode: "cover",
     alignItems: "center",
     justifyContent: "center",
-    width: 350,
+    width: "100%",
     height: 350,
   },
   promptWrap: {

@@ -11,7 +11,7 @@ export default function Index() {
       <ScrollView
         contentContainerStyle={{
           paddingVertical: 20,
-          paddingHorizontal: 16,
+          paddingHorizontal: 20,
           alignItems: "center",
         }}
       >

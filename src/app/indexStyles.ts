@@ -10,9 +10,8 @@ const indexStyles = StyleSheet.create({
     alignItems: "flex-start",
   },
   heading: {
-    fontFamily: "Inter-Regular",
+    fontFamily: "PokemonSolidNormal",
     fontSize: 44,
-    // fontWeight: 700,
     color: colors.primary,
     marginVertical: 10,
     // alignSelf: "flex-start",
@@ -33,7 +32,6 @@ const indexStyles = StyleSheet.create({
   },
   promptWrap: {
     // flex: 1,
-    width: "100%",
     backgroundColor: colors.background,
     borderWidth: 1,
     borderRadius: 16,
@@ -41,10 +39,12 @@ const indexStyles = StyleSheet.create({
     paddingVertical: 16,
     justifyContent: "center",
     alignItems: "center",
+    width: "100%",
     // margin: 20,
   },
   promptTxt: {
     fontSize: 30,
+    fontFamily: "PokemonSolidNormal",
   },
 });
 

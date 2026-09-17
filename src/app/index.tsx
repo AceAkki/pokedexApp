@@ -44,7 +44,7 @@ export default function Index() {
         </View>
 
         <View>
-          <Pressable onPress={() => router.push("/details")}>
+          <Pressable onPress={() => router.push("/home")}>
             <Text>Get Started</Text>
           </Pressable>
         </View>

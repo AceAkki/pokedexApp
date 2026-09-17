@@ -10,9 +10,10 @@ const indexStyles = StyleSheet.create({
     alignItems: "flex-start",
   },
   heading: {
-    fontFamily: "PokemonSolidNormal",
+    fontFamily: "PokemonHollowNormal",
     fontSize: 44,
     color: colors.primary,
+    backgroundColor: colors.secondary,
     marginVertical: 10,
     // alignSelf: "flex-start",
   },

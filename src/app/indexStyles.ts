@@ -44,7 +44,7 @@ const indexStyles = StyleSheet.create({
   },
   promptTxt: {
     fontSize: 30,
-    fontFamily: "PokemonSolidNormal",
+    fontFamily: "Inter-Regular",
   },
 });
 

@@ -26,7 +26,7 @@ export default function Index() {
             source={require("../../assets/images/header.png")}
             style={indexStyles.image}
             accessibilityLabel="Pokédex header image"
-            resizeMode="contain"
+            resizeMode="cover"
           />
         </View>
 

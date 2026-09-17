@@ -12,7 +12,7 @@ const indexStyles = StyleSheet.create({
   heading: {
     fontFamily: "Inter-Regular",
     fontSize: 44,
-    fontWeight: 700,
+    // fontWeight: 700,
     color: colors.primary,
     marginVertical: 10,
     // alignSelf: "flex-start",

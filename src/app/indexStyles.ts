@@ -14,7 +14,7 @@ const indexStyles = StyleSheet.create({
     fontSize: 44,
     color: colors.primary,
     backgroundColor: colors.secondary,
-    marginVertical: 10,
+    // marginVertical: 10,
     // alignSelf: "flex-start",
   },
   imageContainer: {
@@ -41,10 +41,11 @@ const indexStyles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     width: "100%",
+    marginTop: 10,
     // margin: 20,
   },
   promptTxt: {
-    fontSize: 30,
+    fontSize: 25,
     fontFamily: "Inter-Regular",
   },
 });

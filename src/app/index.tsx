@@ -17,7 +17,7 @@ export default function Index() {
       >
         <View style={indexStyles.headerContainer}>
           <Text accessibilityRole="header" style={indexStyles.heading}>
-            Pokédex
+            PoKéDex
           </Text>
         </View>
 

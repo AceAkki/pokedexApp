@@ -53,7 +53,7 @@ export default function Index() {
               } as any,
             ]}
           >
-            <Text>Get Started</Text>
+            <Text style={indexStyles.indexBtnTxt}>Get Started</Text>
           </Pressable>
         </View>
       </ScrollView>

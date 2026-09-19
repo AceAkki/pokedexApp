@@ -50,12 +50,15 @@ const indexStyles = StyleSheet.create({
     fontFamily: "Inter-Regular",
   },
   indexBtn: {
-    fontFamily: "PokemonSolidNormal",
-    fontSize: 20,
     padding: 10,
     borderWidth: 1,
     borderRadius: 10,
     outline: "none",
+  },
+  indexBtnTxt: {
+    fontFamily: "PokemonSolidNormal",
+    fontSize: 25,
+    color: colors.primary,
   },
 });
 

@@ -30,7 +30,7 @@ const indexStyles = StyleSheet.create({
     resizeMode: "cover",
     width: "100%",
     height: 350,
-    aspectRatio: 1,
+    // aspectRatio: 1,
   },
   promptWrap: {
     // flex: 1,

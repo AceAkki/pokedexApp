@@ -15,13 +15,13 @@ export default function Index() {
           alignItems: "center",
         }}
       >
-        <View style={indexStyles.headerContainer}>
+        {/* <View style={indexStyles.headerContainer}>
           <Text accessibilityRole="header" style={indexStyles.heading}>
             PoKéDex
           </Text>
-        </View>
+        </View> */}
 
-        <View style={indexStyles.imageContainer}>
+        <View style={indexStyles.viewContainer}>
           <Image
             source={require("../../assets/images/header.png")}
             style={indexStyles.image}
@@ -43,8 +43,16 @@ export default function Index() {
           </Text>
         </View>
 
-        <View>
-          <Pressable onPress={() => router.push("/home")}>
+        <View style={indexStyles.viewContainer}>
+          <Pressable
+            onPress={() => router.push("/home")}
+            style={({ pressed }) => [
+              indexStyles.indexBtn,
+              {
+                backgroundColor: pressed ? "rgb(210, 230, 255)" : "white",
+              } as any,
+            ]}
+          >
             <Text>Get Started</Text>
           </Pressable>
         </View>

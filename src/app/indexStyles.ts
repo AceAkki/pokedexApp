@@ -11,13 +11,13 @@ const indexStyles = StyleSheet.create({
   },
   heading: {
     fontFamily: "PokemonHollowNormal",
-    fontSize: 44,
+    fontSize: 20,
     color: colors.primary,
     backgroundColor: colors.secondary,
     // marginVertical: 10,
     // alignSelf: "flex-start",
   },
-  imageContainer: {
+  viewContainer: {
     justifyContent: "center",
     alignItems: "center",
     paddingVertical: 16,
@@ -48,6 +48,14 @@ const indexStyles = StyleSheet.create({
   promptTxt: {
     fontSize: 25,
     fontFamily: "Inter-Regular",
+  },
+  indexBtn: {
+    fontFamily: "PokemonSolidNormal",
+    fontSize: 20,
+    padding: 10,
+    borderWidth: 1,
+    borderRadius: 10,
+    outline: "none",
   },
 });
 

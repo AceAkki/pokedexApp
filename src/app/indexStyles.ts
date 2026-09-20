@@ -56,7 +56,7 @@ const indexStyles = StyleSheet.create({
     outline: "none",
   },
   indexBtnTxt: {
-    fontFamily: "PokemonSolidNormal",
+    fontFamily: "Inter-Regular",
     fontSize: 25,
     color: colors.primary,
   },

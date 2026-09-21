@@ -53,10 +53,10 @@ export const globalStyles = StyleSheet.create({
   },
   name: {
     fontSize: 20,
-    fontWeight: 800,
     textTransform: "capitalize",
     textAlign: "center",
-    color: colors.secondary,
+    color: colors.primary,
+    fontFamily: "PokemonSolidNormal",
   },
   type: {
     fontSize: 18,
@@ -64,5 +64,6 @@ export const globalStyles = StyleSheet.create({
     textTransform: "capitalize",
     textAlign: "center",
     color: colors.primary,
+    fontFamily: "Inter-Regular",
   },
 });

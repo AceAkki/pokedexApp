@@ -60,7 +60,6 @@ export const globalStyles = StyleSheet.create({
   },
   type: {
     fontSize: 18,
-    fontWeight: 400,
     textTransform: "capitalize",
     textAlign: "center",
     color: colors.primary,

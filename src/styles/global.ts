@@ -59,16 +59,15 @@ export const globalStyles = StyleSheet.create({
   },
 
   imgContainer: {
-    padding: 15,
+    // padding: 15,
     flex: 1,
   },
   image: {
-    width: "100%",
-    height: 60,
+    width: 90,
+    height: 90,
     aspectRatio: 1,
-    resizeMode: "contain",
-    backgroundColor: colors.background,
-    borderRadius: 100,
+    // backgroundColor: colors.background,
+    // borderRadius: 100,
   },
 
   txtContainer: {

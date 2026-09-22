@@ -39,6 +39,7 @@ export const globalStyles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     maxWidth: "100%",
+    boxSizing: "border-box",
   },
 
   titleText: {
@@ -55,17 +56,20 @@ export const globalStyles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     paddingVertical: 20,
-    paddingHorizontal: 5,
+    paddingHorizontal: 8,
+    boxSizing: "border-box",
   },
 
   imgContainer: {
     // padding: 15,
     flex: 1,
+    boxSizing: "border-box",
   },
   image: {
-    width: 90,
+    width: "auto",
     height: 90,
     aspectRatio: 1,
+
     // backgroundColor: colors.background,
     // borderRadius: 100,
   },

@@ -7,26 +7,25 @@ export const colors = {
   txtLight: "#F2F2F7",
   text: "#1C1C1E",
 };
-
 export const colorType = {
-  normal: "#A8A77A",
-  fire: "#EE8130",
-  water: "#6390F0",
-  electric: "#F7D02C",
-  grass: "#7AC74C",
-  ice: "#96D9D6",
-  fighting: "#C22E28",
-  poison: "#A33EA1",
-  ground: "#E2BF65",
-  flying: "#A98FF3",
-  psychic: "#F95587",
-  bug: "#A6B91A",
-  rock: "#B6A136",
-  ghost: "#735797",
-  dragon: "#6F35FC",
-  dark: "#705746",
-  steel: "#B7B7CE",
-  fairy: "#D685AD",
+  normal: "#A9A8C4",
+  fire: "#fb7e7b",
+  water: "#76befe",
+  electric: "#ffd76f",
+  grass: "#49d0b0",
+  ice: "#72DCEB",
+  fighting: "#EF5967",
+  poison: "#C66BE8",
+  ground: "#E0AE55",
+  flying: "#9B8CFF",
+  psychic: "#FF6FAD",
+  bug: "#A9D94A",
+  rock: "#C6A458",
+  ghost: "#8D70D8",
+  dragon: "#7864F2",
+  dark: "#625477",
+  steel: "#A8B4CA",
+  fairy: "#F58FBD",
 };
 
 export const globalStyles = StyleSheet.create({
@@ -41,35 +40,55 @@ export const globalStyles = StyleSheet.create({
     justifyContent: "center",
     maxWidth: "100%",
   },
-  imgContainer: {
-    flexDirection: "row",
-    padding: 15,
-  },
-  image: {
-    width: "100%",
-    aspectRatio: 1,
-    resizeMode: "contain",
-    backgroundColor: colors.background,
-    borderRadius: 250,
-  },
 
   titleText: {
     fontSize: 24,
     fontWeight: "bold",
     color: colors.text,
   },
+
+  pokemonView: {
+    borderStyle: "solid",
+    borderWidth: 0.7,
+    borderColor: "#000",
+    borderRadius: 20,
+    flexDirection: "row",
+    justifyContent: "space-between",
+    paddingVertical: 20,
+    paddingHorizontal: 5,
+  },
+
+  imgContainer: {
+    padding: 15,
+    flex: 1,
+  },
+  image: {
+    width: "100%",
+    height: 60,
+    aspectRatio: 1,
+    resizeMode: "contain",
+    backgroundColor: colors.background,
+    borderRadius: 100,
+  },
+
+  txtContainer: {
+    flex: 2,
+  },
+
   name: {
-    fontSize: 20,
+    fontSize: 18,
+    fontWeight: 500,
     textTransform: "capitalize",
-    textAlign: "left",
+    textAlign: "center",
     color: colors.txtLight,
     fontFamily: "Inter-Regular",
   },
   type: {
-    fontSize: 18,
-    textTransform: "capitalize",
-    textAlign: "left",
+    marginTop: 8,
+    fontSize: 16,
     color: colors.txtLight,
+    textTransform: "capitalize",
+    textAlign: "center",
     fontFamily: "Inter-Regular",
   },
 });

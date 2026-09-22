@@ -33,7 +33,7 @@ const useFetchData = ({ name, id }: hookType) => {
                 const dets = await res.json();
                 return {
                   name: pokemon.name,
-                  image: dets.sprites.front_default,
+                  image: dets.sprites.other["official-artwork"].front_default,
                   imageBack: dets.sprites.back_default,
                   types: dets.types,
                 };

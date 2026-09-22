@@ -23,18 +23,27 @@ export default function Home() {
               style={{ flex: 1 }}
             >
               <View
-                style={{
-                  backgroundColor: colorType[type as keyof typeof colorType],
-                  paddingHorizontal: 25,
-                  paddingVertical: 20,
-                  borderStyle: "solid",
-                  borderWidth: 1,
-                  borderColor: "#000",
-                  borderRadius: 20,
-                }}
+                style={[
+                  {
+                    backgroundColor: colorType[type as keyof typeof colorType],
+                  },
+                  globalStyles.pokemonView,
+                ]}
               >
-                <Text style={globalStyles.name}>{poke.name}</Text>
-                <Text style={globalStyles.type}>{type}</Text>
+                <View style={globalStyles.txtContainer}>
+                  <Text style={globalStyles.name}>{poke.name}</Text>
+                  <Text
+                    style={[
+                      globalStyles.type,
+                      {
+                        backgroundColor:
+                          colorType[type as keyof typeof colorType] + 50,
+                      },
+                    ]}
+                  >
+                    {type}
+                  </Text>
+                </View>
                 <View style={globalStyles.imgContainer}>
                   <Image
                     source={{ uri: poke.image }}

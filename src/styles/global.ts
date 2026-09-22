@@ -4,6 +4,7 @@ export const colors = {
   primary: "#007AFF",
   secondary: "#00778",
   background: "#F2F2F7",
+  txtLight: "#F2F2F7",
   text: "#1C1C1E",
 };
 
@@ -40,10 +41,16 @@ export const globalStyles = StyleSheet.create({
     justifyContent: "center",
     maxWidth: "100%",
   },
+  imgContainer: {
+    flexDirection: "row",
+    padding: 15,
+  },
   image: {
     width: "100%",
-    aspectRatio: 1.5,
+    aspectRatio: 1,
     resizeMode: "contain",
+    backgroundColor: colors.background,
+    borderRadius: 250,
   },
 
   titleText: {
@@ -54,15 +61,15 @@ export const globalStyles = StyleSheet.create({
   name: {
     fontSize: 20,
     textTransform: "capitalize",
-    textAlign: "center",
-    color: colors.primary,
-    fontFamily: "PokemonSolidNormal",
+    textAlign: "left",
+    color: colors.txtLight,
+    fontFamily: "Inter-Regular",
   },
   type: {
     fontSize: 18,
     textTransform: "capitalize",
-    textAlign: "center",
-    color: colors.primary,
+    textAlign: "left",
+    color: colors.txtLight,
     fontFamily: "Inter-Regular",
   },
 });

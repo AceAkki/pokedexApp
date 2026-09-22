@@ -24,8 +24,7 @@ export default function Home() {
             >
               <View
                 style={{
-                  backgroundColor:
-                    colorType[type as keyof typeof colorType] + 50,
+                  backgroundColor: colorType[type as keyof typeof colorType],
                   paddingHorizontal: 25,
                   paddingVertical: 20,
                   borderStyle: "solid",
@@ -36,7 +35,7 @@ export default function Home() {
               >
                 <Text style={globalStyles.name}>{poke.name}</Text>
                 <Text style={globalStyles.type}>{type}</Text>
-                <View style={{ flexDirection: "row" }}>
+                <View style={globalStyles.imgContainer}>
                   <Image
                     source={{ uri: poke.image }}
                     style={globalStyles.image}

@@ -37,6 +37,8 @@ export default function Home() {
                       globalStyles.type,
                       {
                         backgroundColor:
+                          colorType[type as keyof typeof colorType] + 90,
+                        borderColor:
                           colorType[type as keyof typeof colorType] + 50,
                       },
                     ]}

@@ -75,12 +75,12 @@ export const globalStyles = StyleSheet.create({
   },
 
   txtContainer: {
-    flex: 2,
+    flex: 1.1,
   },
 
   name: {
-    fontSize: 18,
-    fontWeight: 500,
+    fontSize: 15,
+    fontWeight: 900,
     textTransform: "capitalize",
     textAlign: "center",
     color: colors.txtLight,
@@ -88,7 +88,7 @@ export const globalStyles = StyleSheet.create({
   },
   type: {
     marginTop: 8,
-    fontSize: 16,
+    fontSize: 15,
     color: colors.txtLight,
     textTransform: "capitalize",
     textAlign: "center",

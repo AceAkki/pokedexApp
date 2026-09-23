@@ -22,8 +22,6 @@ export default function Home() {
     setNewPokemons(pokemons);
   }, [newPokemons, setNewPokemons]);
 
-  if (newPokemons.length === 0) return;
-  console.log(newPokemons, newPokemons.length < 0, newPokemons.length);
   return (
     <SafeAreaView>
       <FlatList

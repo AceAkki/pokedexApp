@@ -24,72 +24,76 @@ export default function Home() {
 
   return (
     <SafeAreaView>
-      <FlatList
-        data={newPokemons}
-        numColumns={2}
-        columnWrapperStyle={{ gap: 16 }}
-        contentContainerStyle={{ gap: 16, padding: 20 }}
-        renderItem={({ item: poke }) => {
-          let type = poke.types[0].type.name;
+      <View style={{ flex: 1 }}>
+        <FlatList
+          data={newPokemons}
+          numColumns={2}
+          style={{ flex: 1 }}
+          columnWrapperStyle={{ gap: 16 }}
+          contentContainerStyle={{ gap: 16, padding: 20 }}
+          renderItem={({ item: poke }) => {
+            let type = poke.types[0].type.name;
 
-          return (
-            <Link
-              key={poke.name}
-              href={{ pathname: "/details", params: { name: poke.name } }}
-              style={{ flex: 1 }}
-            >
-              <ImageBackground
-                style={[
-                  {
-                    backgroundColor: colorType[type as keyof typeof colorType],
-                  },
-                  globalStyles.pokemonView,
-                ]}
+            return (
+              <Link
+                key={poke.name}
+                href={{ pathname: "/details", params: { name: poke.name } }}
+                style={{ flex: 1 }}
               >
-                <Text style={globalStyles.name}>{poke.name}</Text>
+                <ImageBackground
+                  style={[
+                    {
+                      backgroundColor:
+                        colorType[type as keyof typeof colorType],
+                    },
+                    globalStyles.pokemonView,
+                  ]}
+                >
+                  <Text style={globalStyles.name}>{poke.name}</Text>
 
-                <View style={globalStyles.innerRow}>
-                  <View style={globalStyles.txtContainer}>
-                    <Text
-                      style={[
-                        globalStyles.type,
-                        {
-                          color: colorType[type as keyof typeof colorType],
-                          borderColor:
-                            colorType[type as keyof typeof colorType] + 60,
-                        },
-                      ]}
+                  <View style={globalStyles.innerRow}>
+                    <View style={globalStyles.txtContainer}>
+                      <Text
+                        style={[
+                          globalStyles.type,
+                          {
+                            color: colorType[type as keyof typeof colorType],
+                            borderColor:
+                              colorType[type as keyof typeof colorType] + 60,
+                          },
+                        ]}
+                      >
+                        {type}
+                      </Text>
+                    </View>
+                    <ImageBackground
+                      style={globalStyles.imgContainer}
+                      source={require("../../assets/images/pokeball1.png")}
+                      resizeMode="cover"
+                      imageStyle={{ opacity: 0.3, width: 100, height: 100 }}
                     >
-                      {type}
-                    </Text>
+                      <Image
+                        source={{ uri: poke.image }}
+                        style={globalStyles.image}
+                      />
+                    </ImageBackground>
                   </View>
-                  <ImageBackground
-                    style={globalStyles.imgContainer}
-                    source={require("../../assets/images/pokeball1.png")}
-                    resizeMode="cover"
-                    imageStyle={{ opacity: 0.3, width: 100, height: 100 }}
-                  >
-                    <Image
-                      source={{ uri: poke.image }}
-                      style={globalStyles.image}
-                    />
-                  </ImageBackground>
-                </View>
-              </ImageBackground>
-            </Link>
-          );
-        }}
-        keyExtractor={(poke) => poke.name}
-      />
-      <View>
-        <Pressable
-          onPress={() => {
-            let { pokemons } = useFetchData({ limit: 20 } as any);
-            setNewPokemons(pokemons);
+                </ImageBackground>
+              </Link>
+            );
           }}
-        >
-          <Text>Next</Text>
-        </Pressable>
+          keyExtractor={(poke) => poke.name}
+        />
+        <View>
+          <Pressable
+            onPress={() => {
+              let { pokemons } = useFetchData({ limit: 20 } as any);
+              setNewPokemons(pokemons);
+            }}
+          >
+            <Text>Next</Text>
+          </Pressable>
+        </View>
       </View>
     </SafeAreaView>
   );

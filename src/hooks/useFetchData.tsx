@@ -4,8 +4,9 @@ import { useEffect, useState } from "react";
 interface hookType {
   name?: string;
   id?: string;
+  limit?: number;
 }
-const useFetchData = ({ name, id }: hookType) => {
+const useFetchData = ({ name, id, limit }: hookType) => {
   let [pokemons, setPokemons] = useState<Pokemon[]>([]);
   let [pokemon, setPokemon] = useState<Pokemon | null>(null);
 
@@ -14,13 +15,13 @@ const useFetchData = ({ name, id }: hookType) => {
     // console.log(pokemon);
   }, []);
 
-  async function fetchPokemons({ name, id }: hookType) {
+  async function fetchPokemons({ name, id, limit = 6 }: hookType) {
     const hasParam = name || id;
     const url = name
       ? `https://pokeapi.co/api/v2/pokemon/${name}`
       : id
         ? `https://pokeapi.co/api/v2/pokemon/${id}`
-        : "https://pokeapi.co/api/v2/pokemon/?limit=20";
+        : `https://pokeapi.co/api/v2/pokemon/?limit=${limit}&offset=0`;
     try {
       const response = await fetch(url);
       if (response.ok) {

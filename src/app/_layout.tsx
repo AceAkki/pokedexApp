@@ -9,6 +9,13 @@ export default function RootLayout() {
   const [loaded, error] = useFonts({
     "Inter-Regular": require("../../assets/fonts/Inter-Regular.ttf"),
     "Inter-Italic": require("../../assets/fonts/Inter-Italic.ttf"),
+    "Oswald-ExtraLight": require("../../assets/fonts/Oswald-ExtraLight.ttf"),
+    "Oswald-Light": require("../../assets/fonts/Oswald-Light.ttf"),
+    "Oswald-Regular": require("../../assets/fonts/Oswald-Regular.ttf"),
+    "Oswald-Medium": require("../../assets/fonts/Oswald-Medium.ttf"),
+    "Oswald-Bold": require("../../assets/fonts/Oswald-Bold.ttf"),
+    "Oswald-SemiBold": require("../../assets/fonts/Oswald-SemiBold.ttf"),
+    "ArchivoBlack-Regular": require("../../assets/fonts/ArchivoBlack-Regular.ttf"),
     PokemonHollowNormal: require("../../assets/fonts/PokemonHollowNormal.ttf"),
     PokemonSolidNormal: require("../../assets/fonts/PokemonSolidNormal.ttf"),
   });

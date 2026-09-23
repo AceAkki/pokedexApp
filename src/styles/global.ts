@@ -4,8 +4,12 @@ export const colors = {
   primary: "#007AFF",
   secondary: "#00778",
   background: "#F2F2F7",
+  backgroundLight: "#F5F5F599",
+
   txtLight: "#F2F2F7",
-  text: "#1C1C1E",
+  text: "#1D2128",
+
+  alert: "#D90000",
 };
 export const colorType = {
   normal: "#A9A8C4",
@@ -32,6 +36,7 @@ export const globalStyles = StyleSheet.create({
   bold900: {
     fontWeight: 900,
   },
+
   container: {
     flex: 1,
     backgroundColor: colors.background,
@@ -53,17 +58,24 @@ export const globalStyles = StyleSheet.create({
     borderWidth: 0.7,
     borderColor: "#000",
     borderRadius: 20,
-    flexDirection: "row",
     justifyContent: "space-between",
     paddingVertical: 20,
-    paddingHorizontal: 8,
+    paddingHorizontal: 15,
     boxSizing: "border-box",
+    width: "100%",
+  },
+  innerRow: {
+    flexDirection: "row",
+    justifyContent: "space-between",
   },
 
   imgContainer: {
     // padding: 15,
     flex: 1,
     boxSizing: "border-box",
+    alignItems: "center",
+    justifyContent: "center",
+    marginBottom: -15,
   },
   image: {
     width: "auto",
@@ -79,19 +91,23 @@ export const globalStyles = StyleSheet.create({
   },
 
   name: {
-    fontSize: 15,
-    fontWeight: 900,
+    fontSize: 20,
     textTransform: "capitalize",
-    textAlign: "center",
+    textAlign: "left",
     color: colors.txtLight,
-    fontFamily: "Inter-Regular",
+    fontFamily: "ArchivoBlack-Regular",
   },
   type: {
     marginTop: 8,
+    paddingVertical: 2,
+    paddingHorizontal: 5,
     fontSize: 15,
-    color: colors.txtLight,
     textTransform: "capitalize",
-    textAlign: "center",
-    fontFamily: "Inter-Regular",
+    textAlign: "left",
+    fontFamily: "Oswald-Light",
+    borderWidth: 1,
+    alignSelf: "flex-start",
+    backgroundColor: colors.backgroundLight,
+    borderRadius: 12,
   },
 });

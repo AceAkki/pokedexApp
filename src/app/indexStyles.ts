@@ -54,7 +54,6 @@ const indexStyles = StyleSheet.create({
     paddingHorizontal: 15,
     borderWidth: 1,
     borderRadius: 16,
-    outline: "none",
   },
   indexBtnTxt: {
     fontFamily: "Inter-Regular",

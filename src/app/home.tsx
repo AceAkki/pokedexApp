@@ -13,8 +13,9 @@ import useFetchData from "../hooks/useFetchData";
 
 import type { Pokemon } from "@/types/pokemonType";
 import { colorType, globalStyles } from "../styles/global";
+
 export default function Home() {
-  let [newPokemons, setNewPokemons] = useState<Pokemon[] | []>([]);
+  let [newPokemons, setNewPokemons] = useState<Pokemon[]>([]);
   let { pokemons } = useFetchData({} as any);
 
   useEffect(() => {

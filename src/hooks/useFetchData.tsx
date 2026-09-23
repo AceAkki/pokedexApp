@@ -15,7 +15,7 @@ const useFetchData = ({ name, id, limit }: hookType) => {
     // console.log(pokemon);
   }, []);
 
-  async function fetchPokemons({ name, id, limit = 6 }: hookType) {
+  async function fetchPokemons({ name, id, limit = 20 }: hookType) {
     const hasParam = name || id;
     const url = name
       ? `https://pokeapi.co/api/v2/pokemon/${name}`

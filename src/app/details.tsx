@@ -1,8 +1,10 @@
-import { Link, useLocalSearchParams } from "expo-router";
-import { Button, ScrollView, Text, View } from "react-native";
-
+import { useLocalSearchParams } from "expo-router";
+import { ScrollView, Text, View } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 //hooks
 import useFetchData from "../hooks/useFetchData";
+import { typeColors } from "../styles/global";
+import detailsStyles from "./detailsStyles";
 
 const Details = () => {
   const params = useLocalSearchParams();
@@ -12,24 +14,41 @@ const Details = () => {
   let { pokemon } = useFetchData({ name: currentName });
   // console.log(params.name);
   if (!pokemon) {
-    <View>
-      <Text>Details Loading</Text>;
-    </View>;
+    return (
+      <View>
+        <Text>Details Loading</Text>
+      </View>
+    );
   }
-
+  let pokemonType = pokemon.types[0].type.name;
   return (
-    <ScrollView
-      contentContainerStyle={{
-        backgroundColor: "#fff",
-        borderRadius: 12,
-        padding: 20,
-      }}
-    >
-      <Text>{pokemon?.name}</Text>
-      <Link href="/" push asChild>
-        <Button title="push to sec" />
-      </Link>
-    </ScrollView>
+    <SafeAreaView>
+      <ScrollView
+        contentContainerStyle={{
+          backgroundColor: "#fff",
+          borderRadius: 12,
+          padding: 20,
+        }}
+      >
+        <View
+          style={[
+            {
+              backgroundColor:
+                typeColors[pokemonType as keyof typeof typeColors],
+            },
+            detailsStyles.headerContainer,
+          ]}
+        >
+          <View>
+            <Text style={detailsStyles.heading}>{pokemon.name}</Text>
+            <Text>{pokemon.types[0].type.name}</Text>
+          </View>
+          <View>
+            <Text>{pokemon.id}</Text>
+          </View>
+        </View>
+      </ScrollView>
+    </SafeAreaView>
   );
 };
 export default Details;

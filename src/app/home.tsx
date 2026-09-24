@@ -12,7 +12,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import useFetchData from "../hooks/useFetchData";
 
 import type { Pokemon } from "@/types/pokemonType";
-import { colorType, globalStyles } from "../styles/global";
+import { globalStyles, typeColors } from "../styles/global";
 
 export default function Home() {
   let [newPokemons, setNewPokemons] = useState<Pokemon[]>([]);
@@ -20,7 +20,15 @@ export default function Home() {
 
   useEffect(() => {
     setNewPokemons(pokemons);
-  }, [newPokemons, setNewPokemons]);
+  }, [pokemons, setNewPokemons]);
+
+  if (newPokemons.length === 0) {
+    return (
+      <View>
+        <Text>Details Loading</Text>
+      </View>
+    );
+  }
 
   return (
     <SafeAreaView>
@@ -33,6 +41,8 @@ export default function Home() {
           contentContainerStyle={{ gap: 16, padding: 20 }}
           renderItem={({ item: poke }) => {
             let type = poke.types[0].type.name;
+            let imageSrc = poke.sprites.other["official-artwork"]
+              .front_default as string;
 
             return (
               <Link
@@ -44,7 +54,7 @@ export default function Home() {
                   style={[
                     {
                       backgroundColor:
-                        colorType[type as keyof typeof colorType],
+                        typeColors[type as keyof typeof typeColors],
                     },
                     globalStyles.pokemonView,
                   ]}
@@ -57,9 +67,9 @@ export default function Home() {
                         style={[
                           globalStyles.type,
                           {
-                            color: colorType[type as keyof typeof colorType],
+                            color: typeColors[type as keyof typeof typeColors],
                             borderColor:
-                              colorType[type as keyof typeof colorType] + 60,
+                              typeColors[type as keyof typeof typeColors] + 60,
                           },
                         ]}
                       >
@@ -73,7 +83,9 @@ export default function Home() {
                       imageStyle={{ opacity: 0.3, width: 100, height: 100 }}
                     >
                       <Image
-                        source={{ uri: poke.image }}
+                        source={{
+                          uri: imageSrc,
+                        }}
                         style={globalStyles.image}
                       />
                     </ImageBackground>

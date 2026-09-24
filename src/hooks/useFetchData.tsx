@@ -33,10 +33,7 @@ const useFetchData = ({ name, id, limit }: hookType) => {
                 const res = await fetch(pokemon.url);
                 const dets = await res.json();
                 return {
-                  name: pokemon.name,
-                  image: dets.sprites.other["official-artwork"].front_default,
-                  imageBack: dets.sprites.back_default,
-                  types: dets.types,
+                  ...dets,
                 };
               }),
             )

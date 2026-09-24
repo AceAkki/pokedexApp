@@ -11,7 +11,7 @@ export const colors = {
 
   alert: "#D90000",
 };
-export const colorType = {
+export const typeColors = {
   normal: "#A9A8C4",
   fire: "#fb7e7b",
   water: "#76befe",

@@ -20,14 +20,10 @@ export default function Home() {
 
   useEffect(() => {
     setNewPokemons(pokemons);
-  }, [pokemons, setNewPokemons]);
+  }, [pokemons, newPokemons, setNewPokemons]);
 
   if (newPokemons.length === 0) {
-    return (
-      <View>
-        <Text>Details Loading</Text>
-      </View>
-    );
+    return <Text>Details Loading</Text>;
   }
 
   return (
@@ -96,7 +92,7 @@ export default function Home() {
           }}
           keyExtractor={(poke) => poke.name}
         />
-        <View>
+        <View style={{ flex: 1 }}>
           <Pressable
             onPress={() => {
               let { pokemons } = useFetchData({ limit: 20 } as any);

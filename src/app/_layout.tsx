@@ -49,6 +49,7 @@ export default function RootLayout() {
         name="details"
         options={() => ({
           title: "Details",
+          headerShown: false,
           headerBackButtonDisplayMode: "minimal",
           presentation: "formSheet",
           sheetAllowedDetents: [0.5, 0.9],

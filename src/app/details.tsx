@@ -49,7 +49,7 @@ const Details = () => {
             <Text>{pokemon.id}</Text>
           </View>
         </View>
-        <View>
+        <View style={{ alignItems: "center", justifyContent: "center" }}>
           <Image
             source={{
               uri: imageSrc,

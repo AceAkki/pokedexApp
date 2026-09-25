@@ -21,6 +21,7 @@ export default function Home() {
   useEffect(() => {
     setNewPokemons(pokemons);
   }, [pokemons, newPokemons, setNewPokemons]);
+  console.log(pokemons);
 
   if (newPokemons.length === 0) {
     return <Text>Details Loading</Text>;

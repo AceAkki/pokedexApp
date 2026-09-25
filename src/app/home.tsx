@@ -15,12 +15,14 @@ import type { Pokemon } from "@/types/pokemonType";
 import { globalStyles, typeColors } from "../styles/global";
 
 export default function Home() {
+  let [offset, setOffset] = useState<number>(0);
+  let [limit, setLimit] = useState<number>(40);
   let [newPokemons, setNewPokemons] = useState<Pokemon[]>([]);
-  let { pokemons } = useFetchData({} as any);
+  let { pokemons } = useFetchData({ limit: limit, offset: offset } as any);
 
   useEffect(() => {
     setNewPokemons(pokemons);
-  }, [pokemons, newPokemons, setNewPokemons]);
+  }, [pokemons, newPokemons, setNewPokemons, offset, limit]);
 
   if (newPokemons.length === 0) {
     return <Text>Details Loading</Text>;
@@ -39,7 +41,14 @@ export default function Home() {
           paddingBottom: 50,
         }}
         ListFooterComponent={
-          <Pressable onPress={() => {}}>
+          <Pressable
+            onPress={() => {
+              setOffset((prev) => prev + limit);
+              setLimit((prev) => prev + limit);
+              alert(offset);
+              alert(limit);
+            }}
+          >
             <Text>Next</Text>
           </Pressable>
         }

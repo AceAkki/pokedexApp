@@ -25,7 +25,7 @@ export default function Home() {
   }, [pokemons, newPokemons, setNewPokemons, offset, limit]);
 
   if (newPokemons.length === 0) {
-    return <Text>Details Loading</Text>;
+    return <Text>Loading Pokemons</Text>;
   }
 
   return (

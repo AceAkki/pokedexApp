@@ -16,7 +16,7 @@ const Details = () => {
   if (!pokemon) {
     return (
       <View>
-        <Text>Details Loading</Text>
+        <Text>Loading Pokemon Details</Text>
       </View>
     );
   }

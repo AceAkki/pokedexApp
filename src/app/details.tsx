@@ -1,5 +1,5 @@
 import { useLocalSearchParams } from "expo-router";
-import { ScrollView, Text, View } from "react-native";
+import { Image, ScrollView, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 //hooks
 import useFetchData from "../hooks/useFetchData";
@@ -21,6 +21,8 @@ const Details = () => {
     );
   }
   let pokemonType = pokemon.types[0].type.name;
+  let imageSrc = pokemon.sprites.other["official-artwork"]
+    .front_default as string;
   return (
     <SafeAreaView>
       <ScrollView
@@ -46,6 +48,14 @@ const Details = () => {
           <View>
             <Text>{pokemon.id}</Text>
           </View>
+        </View>
+        <View>
+          <Image
+            source={{
+              uri: imageSrc,
+            }}
+            style={detailsStyles.image}
+          />
         </View>
       </ScrollView>
     </SafeAreaView>

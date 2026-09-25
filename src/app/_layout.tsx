@@ -52,7 +52,7 @@ export default function RootLayout() {
           headerShown: false,
           headerBackButtonDisplayMode: "minimal",
           presentation: "formSheet",
-          sheetAllowedDetents: [0.5, 0.9],
+          sheetAllowedDetents: [0.7, 0.9],
           sheetGrabberVisible: true,
           sheetCornerRadius: 30,
         })}

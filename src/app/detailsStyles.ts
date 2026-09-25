@@ -18,6 +18,11 @@ const detailsStyles = StyleSheet.create({
     // marginVertical: 10,
     // alignSelf: "flex-start",
   },
+  image: {
+    width: "100%",
+    height: 300,
+    aspectRatio: 1,
+  },
 });
 
 export default detailsStyles;

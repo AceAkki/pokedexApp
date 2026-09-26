@@ -1,5 +1,5 @@
 import { useLocalSearchParams } from "expo-router";
-import { Image, ScrollView, Text, View } from "react-native";
+import { Image, ImageBackground, ScrollView, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 //hooks
 import useFetchData from "../hooks/useFetchData";
@@ -24,38 +24,49 @@ const Details = () => {
   let imageSrc = pokemon.sprites.other["official-artwork"]
     .front_default as string;
   return (
-    <SafeAreaView>
+    <SafeAreaView
+      style={{
+        backgroundColor: typeColors[pokemonType as keyof typeof typeColors],
+      }}
+    >
       <ScrollView
         contentContainerStyle={{
-          backgroundColor: "#fff",
+          backgroundColor: typeColors[pokemonType as keyof typeof typeColors],
           borderRadius: 12,
-          padding: 20,
         }}
       >
-        <View
-          style={[
-            {
-              backgroundColor:
-                typeColors[pokemonType as keyof typeof typeColors],
-            },
-            detailsStyles.headerContainer,
-          ]}
-        >
-          <View>
-            <Text style={detailsStyles.heading}>{pokemon.name}</Text>
-            <Text>{pokemon.types[0].type.name}</Text>
+        <View>
+          <View style={detailsStyles.headingContainer}>
+            <View style={detailsStyles.headingLeft}>
+              <Text style={detailsStyles.heading}>{pokemon.name}</Text>
+              <Text style={detailsStyles.type}>
+                {pokemon.types[0].type.name}
+              </Text>
+            </View>
+            <View style={detailsStyles.headingRight}>
+              <Text style={detailsStyles.id}>#{pokemon.id}</Text>
+            </View>
           </View>
-          <View>
-            <Text>{pokemon.id}</Text>
-          </View>
-        </View>
-        <View style={{ alignItems: "center", justifyContent: "center" }}>
-          <Image
-            source={{
-              uri: imageSrc,
+          <ImageBackground
+            source={require("../../assets/images/pokeball1.png")}
+            resizeMode="cover"
+            imageStyle={{
+              opacity: 0.3,
+              width: 300,
+              height: 300,
+              position: "absolute",
+              right: 0,
+              left: "auto",
             }}
-            style={detailsStyles.image}
-          />
+            style={detailsStyles.imageContainer}
+          >
+            <Image
+              source={{
+                uri: imageSrc,
+              }}
+              style={detailsStyles.image}
+            />
+          </ImageBackground>
         </View>
       </ScrollView>
     </SafeAreaView>

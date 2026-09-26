@@ -81,8 +81,6 @@ export default function Home() {
                         globalStyles.type,
                         {
                           color: typeColors[type as keyof typeof typeColors],
-                          borderColor:
-                            typeColors[type as keyof typeof typeColors] + 60,
                         },
                       ]}
                     >

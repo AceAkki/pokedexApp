@@ -108,6 +108,7 @@ export const globalStyles = StyleSheet.create({
     borderWidth: 1,
     alignSelf: "flex-start",
     backgroundColor: colors.background,
+    borderColor: colors.secondary,
     borderRadius: 5,
   },
 });

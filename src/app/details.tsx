@@ -1,16 +1,16 @@
 import { useLocalSearchParams } from "expo-router";
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import {
   ActivityIndicator,
   Image,
   ImageBackground,
   Text,
   View,
-  useWindowDimensions
+  useWindowDimensions,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-import { SceneMap, TabView } from "react-native-tab-view";
+import { SceneMap, TabBar, TabView } from "react-native-tab-view";
 // follwing is NativeTabs
 //hooks
 import useFetchData from "@/hooks/useFetchData";
@@ -40,24 +40,30 @@ const Details = () => {
   let imageSrc = pokemon.sprites.other["official-artwork"]
     .front_default as string;
 
-  const FirstRoute = () => (
-    <View style={{ flex: 1, paddingHorizontal: 16 }}>
-      <Text>Stats</Text>
-      {pokemon.stats.map((stat) => (
-        <View key={stat.stat.name}>
-          <Text>{stat.stat.name}</Text>
-          {/* <ProgressBar value={stat.base_stat} maxValue={255} /> */}
-        </View>
-      ))}
-    </View>
+  const FirstRoute = useCallback(
+    () => (
+      <View style={{ flex: 1, paddingHorizontal: 16 }}>
+        <Text>Stats</Text>
+        {pokemon.stats.map((stat) => (
+          <View key={stat.stat.name}>
+            <Text>{stat.stat.name}</Text>
+            {/* <ProgressBar value={stat.base_stat} maxValue={255} /> */}
+          </View>
+        ))}
+      </View>
+    ),
+    [pokemon],
   );
 
-  const SecondRoute = () => (
-    <View style={{ flex: 1, paddingHorizontal: 16 }}>
-      <Text>About</Text>
-      <Text>Height: {pokemon.height / 10} m</Text>
-      <Text>Weight: {pokemon.weight / 10} kg</Text>
-    </View>
+  const SecondRoute = useCallback(
+    () => (
+      <View style={{ flex: 1, paddingHorizontal: 16 }}>
+        <Text>About</Text>
+        <Text>Height: {pokemon.height / 10} m</Text>
+        <Text>Weight: {pokemon.weight / 10} kg</Text>
+      </View>
+    ),
+    [pokemon],
   );
 
   const renderScene = SceneMap({
@@ -73,11 +79,13 @@ const Details = () => {
   return (
     <SafeAreaView
       style={{
+        flex: 1,
         backgroundColor: typeColors[pokemonType as keyof typeof typeColors],
       }}
     >
       <View
         style={{
+          flex: 1,
           backgroundColor: typeColors[pokemonType as keyof typeof typeColors],
           borderRadius: 12,
         }}
@@ -120,12 +128,26 @@ const Details = () => {
             />
           </ImageBackground>
         </View>
-        <TabView
-          navigationState={{ index, routes }}
-          renderScene={renderScene}
-          onIndexChange={setIndex}
-          initialLayout={{ width: layout.width }}
-        />
+        <View style={{ flex: 1, width: "100%" }}>
+          <TabView
+            navigationState={{ index, routes }}
+            renderScene={renderScene}
+            onIndexChange={setIndex}
+            initialLayout={{ width: layout.width }}
+            renderTabBar={(props) => (
+              <TabBar
+                {...props}
+                indicatorStyle={{ backgroundColor: colors.primary }}
+                style={{
+                  backgroundColor:
+                    typeColors[pokemonType as keyof typeof typeColors],
+                }}
+                activeColor={colors.primary}
+                inactiveColor={colors.txtLight}
+              />
+            )}
+          />
+        </View>
       </View>
     </SafeAreaView>
   );

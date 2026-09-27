@@ -15,6 +15,7 @@ const homeStyles = StyleSheet.create({
   },
   heading: {
     fontSize: 25,
+    fontFamily: "Oswald-Regular",
   },
   type: {
     fontSize: 12,

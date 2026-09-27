@@ -5,7 +5,8 @@ import { SafeAreaView } from "react-native-safe-area-context";
 //hooks
 import useFetchData from "@/hooks/useFetchData";
 import detailsStyles from "@/styles/detailsStyles";
-import { typeColors } from "@/styles/global";
+import { colors, globalStyles, typeColors, typeIcons } from "@/styles/global";
+import FontAwesome6 from "@expo/vector-icons/FontAwesome6";
 
 const Details = () => {
   const params = useLocalSearchParams();
@@ -40,9 +41,14 @@ const Details = () => {
           <View style={detailsStyles.headingContainer}>
             <View style={detailsStyles.headingLeft}>
               <Text style={detailsStyles.heading}>{pokemon.name}</Text>
-              <Text style={detailsStyles.type}>
-                {pokemon.types[0].type.name}
-              </Text>
+              <View style={globalStyles.typeRow}>
+                <Text style={detailsStyles.type}>{pokemonType}</Text>
+                <FontAwesome6
+                  name={typeIcons[pokemonType as keyof typeof typeIcons] as any}
+                  size={24}
+                  color={colors.txtLight}
+                />
+              </View>
             </View>
             <View style={detailsStyles.headingRight}>
               <Text style={detailsStyles.id}>#{pokemon.id}</Text>

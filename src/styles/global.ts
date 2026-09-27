@@ -31,6 +31,26 @@ export const typeColors = {
   steel: "#A8B4CA",
   fairy: "#F58FBD",
 };
+export const typeIcons = {
+  normal: "circle",
+  fire: "fire",
+  water: "droplet",
+  electric: "bolt",
+  grass: "leaf",
+  ice: "snowflake",
+  fighting: "hand-fist",
+  poison: "flask",
+  ground: "hill-rockslide", // or "mountain"
+  flying: "wind",
+  psychic: "eye", // or "brain"
+  bug: "bug",
+  rock: "gem", // or "mountain"
+  ghost: "ghost",
+  dragon: "dragon",
+  dark: "moon",
+  steel: "shield-halved", // or "wrench"
+  fairy: "wand-magic-sparkles", // or "star"
+} as const;
 
 export const globalStyles = StyleSheet.create({
   bold900: {
@@ -51,6 +71,12 @@ export const globalStyles = StyleSheet.create({
     fontSize: 24,
     fontWeight: "bold",
     color: colors.text,
+  },
+
+  typeRow: {
+    flexDirection: "row",
+    gap: 10,
+    alignItems: "center",
   },
 
   innerRow: {

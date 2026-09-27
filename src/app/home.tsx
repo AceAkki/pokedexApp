@@ -11,6 +11,9 @@ import {
 import { SafeAreaView } from "react-native-safe-area-context";
 import useFetchData from "../hooks/useFetchData";
 
+import { colors, typeIcons } from "@/styles/global";
+import FontAwesome6 from "@expo/vector-icons/FontAwesome6";
+
 import detailsStyles from "@/styles/detailsStyles";
 import { globalStyles, typeColors } from "@/styles/global";
 import homeStyles from "@/styles/homeStyles";
@@ -67,11 +70,13 @@ export default function Home() {
             >
               <ImageBackground
                 style={[
+                  homeStyles.pokemonView,
                   {
                     backgroundColor:
                       typeColors[type as keyof typeof typeColors],
+                    borderColor: typeColors[type as keyof typeof typeColors],
+                    borderWidth: 2,
                   },
-                  homeStyles.pokemonView,
                 ]}
               >
                 <Text style={[detailsStyles.heading, homeStyles.heading]}>
@@ -80,9 +85,14 @@ export default function Home() {
 
                 <View style={globalStyles.innerRow}>
                   <View style={homeStyles.txtContainer}>
-                    <Text style={[detailsStyles.type, homeStyles.type]}>
+                    <FontAwesome6
+                      name={typeIcons[type as keyof typeof typeIcons] as any}
+                      size={24}
+                      color={colors.txtLight}
+                    />
+                    {/* <Text style={[detailsStyles.type, homeStyles.type]}>
                       {type}
-                    </Text>
+                    </Text> */}
                   </View>
                   <ImageBackground
                     style={homeStyles.imgContainer}

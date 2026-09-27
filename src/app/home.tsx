@@ -11,8 +11,10 @@ import {
 import { SafeAreaView } from "react-native-safe-area-context";
 import useFetchData from "../hooks/useFetchData";
 
+import detailsStyles from "@/styles/detailsStyles";
+import { globalStyles, typeColors } from "@/styles/global";
+import homeStyles from "@/styles/homeStyles";
 import type { Pokemon } from "@/types/pokemonType";
-import { globalStyles, typeColors } from "../styles/global";
 
 export default function Home() {
   let [offset, setOffset] = useState<number>(0);
@@ -69,26 +71,21 @@ export default function Home() {
                     backgroundColor:
                       typeColors[type as keyof typeof typeColors],
                   },
-                  globalStyles.pokemonView,
+                  homeStyles.pokemonView,
                 ]}
               >
-                <Text style={globalStyles.name}>{poke.name}</Text>
+                <Text style={[detailsStyles.heading, homeStyles.heading]}>
+                  {poke.name}
+                </Text>
 
                 <View style={globalStyles.innerRow}>
-                  <View style={globalStyles.txtContainer}>
-                    <Text
-                      style={[
-                        globalStyles.type,
-                        {
-                          color: typeColors[type as keyof typeof typeColors],
-                        },
-                      ]}
-                    >
+                  <View style={homeStyles.txtContainer}>
+                    <Text style={[detailsStyles.type, homeStyles.type]}>
                       {type}
                     </Text>
                   </View>
                   <ImageBackground
-                    style={globalStyles.imgContainer}
+                    style={homeStyles.imgContainer}
                     source={require("../../assets/images/pokeball1.png")}
                     resizeMode="cover"
                     imageStyle={{ opacity: 0.3, width: 100, height: 100 }}
@@ -97,7 +94,7 @@ export default function Home() {
                       source={{
                         uri: imageSrc,
                       }}
-                      style={globalStyles.image}
+                      style={homeStyles.image}
                     />
                   </ImageBackground>
                 </View>

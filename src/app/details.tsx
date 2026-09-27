@@ -1,10 +1,11 @@
 import { useLocalSearchParams } from "expo-router";
 import { Image, ImageBackground, ScrollView, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+// follwing is NativeTabs
 //hooks
-import useFetchData from "../hooks/useFetchData";
-import { typeColors } from "../styles/global";
-import detailsStyles from "./detailsStyles";
+import useFetchData from "@/hooks/useFetchData";
+import detailsStyles from "@/styles/detailsStyles";
+import { typeColors } from "@/styles/global";
 
 const Details = () => {
   const params = useLocalSearchParams();

@@ -53,62 +53,8 @@ export const globalStyles = StyleSheet.create({
     color: colors.text,
   },
 
-  pokemonView: {
-    borderStyle: "solid",
-    borderWidth: 0.7,
-    borderColor: "#000",
-    borderRadius: 20,
-    justifyContent: "space-between",
-    paddingVertical: 20,
-    paddingHorizontal: 15,
-    boxSizing: "border-box",
-    width: "100%",
-  },
   innerRow: {
     flexDirection: "row",
     justifyContent: "space-between",
-  },
-
-  imgContainer: {
-    // padding: 15,
-    flex: 1,
-    boxSizing: "border-box",
-    alignItems: "center",
-    justifyContent: "center",
-    marginBottom: -15,
-  },
-  image: {
-    width: "auto",
-    height: 90,
-    aspectRatio: 1,
-
-    // backgroundColor: colors.background,
-    // borderRadius: 100,
-  },
-
-  txtContainer: {
-    flex: 1.1,
-  },
-
-  name: {
-    fontSize: 20,
-    textTransform: "capitalize",
-    textAlign: "left",
-    color: colors.txtLight,
-    fontFamily: "ArchivoBlack-Regular",
-  },
-  type: {
-    marginTop: 8,
-    paddingVertical: 2,
-    paddingHorizontal: 5,
-    fontSize: 15,
-    textTransform: "uppercase",
-    textAlign: "left",
-    fontFamily: "Oswald-Light",
-    borderWidth: 1,
-    alignSelf: "flex-start",
-    backgroundColor: colors.background,
-    borderColor: colors.secondary,
-    borderRadius: 5,
   },
 });

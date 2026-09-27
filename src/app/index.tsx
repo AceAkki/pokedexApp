@@ -1,8 +1,8 @@
+import { globalStyles } from "@/styles/global";
+import indexStyles from "@/styles/indexStyles";
 import { useRouter } from "expo-router";
 import { Image, Pressable, ScrollView, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { globalStyles } from "../styles/global";
-import indexStyles from "./indexStyles";
 
 export default function Index() {
   const router = useRouter();

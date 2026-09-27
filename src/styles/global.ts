@@ -15,7 +15,7 @@ export const typeColors = {
   normal: "#A9A8C4",
   fire: "#fb7e7b",
   water: "#76befe",
-  electric: "#ffd76f",
+  electric: "#e1be69",
   grass: "#49d0b0",
   ice: "#72DCEB",
   fighting: "#EF5967",

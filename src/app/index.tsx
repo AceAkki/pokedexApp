@@ -23,8 +23,6 @@ export default function Index() {
         flex: 1,
         borderWidth: 1,
         borderColor: "red",
-        width: width,
-        height: height,
       }}
       imageStyle={{
         opacity: 0.3,
@@ -36,6 +34,7 @@ export default function Index() {
             paddingVertical: 20,
             paddingHorizontal: 20,
             alignItems: "center",
+            justifyContent: "center",
           }}
         >
           {/* <View style={indexStyles.headerContainer}>

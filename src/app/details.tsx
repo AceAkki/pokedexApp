@@ -2,6 +2,7 @@ import { useLocalSearchParams } from "expo-router";
 import { useCallback, useState } from "react";
 import {
   ActivityIndicator,
+  Dimensions,
   Image,
   ImageBackground,
   Text,
@@ -23,6 +24,7 @@ import { colors, globalStyles, typeColors, typeIcons } from "@/styles/global";
 // icons
 import FontAwesome6 from "@expo/vector-icons/FontAwesome6";
 
+const { width, height } = Dimensions.get("window");
 const Details = () => {
   const params = useLocalSearchParams();
   const currentName = Array.isArray(params?.name)
@@ -105,7 +107,20 @@ const Details = () => {
   ];
 
   return (
-    <ImageBackground source={require("@/assets/images/bg/1.jpg")}>
+    <ImageBackground
+      source={require("@/assets/images/bg/1.jpg")}
+      resizeMode="cover"
+      style={{
+        flex: 1,
+        borderWidth: 1,
+        borderColor: "red",
+        width: width,
+        height: height,
+      }}
+      imageStyle={{
+        opacity: 0.3,
+      }}
+    >
       <SafeAreaView
         style={{
           flex: 1,

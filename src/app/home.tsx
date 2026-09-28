@@ -1,6 +1,7 @@
 import { Link } from "expo-router";
 import { useEffect, useState } from "react";
 import {
+  ActivityIndicator,
   FlatList,
   Image,
   ImageBackground,
@@ -9,28 +10,37 @@ import {
   View,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+
+// hooks
 import useFetchData from "../hooks/useFetchData";
 
-import { colors, typeIcons } from "@/styles/global";
+// styles
+import detailsStyles from "@/styles/detailsStyles";
+import { colors, globalStyles, typeColors, typeIcons } from "@/styles/global";
+import homeStyles from "@/styles/homeStyles";
+
+// icons
 import FontAwesome6 from "@expo/vector-icons/FontAwesome6";
 
-import detailsStyles from "@/styles/detailsStyles";
-import { globalStyles, typeColors } from "@/styles/global";
-import homeStyles from "@/styles/homeStyles";
+// types
 import type { Pokemon } from "@/types/pokemonType";
 
 export default function Home() {
   let [offset, setOffset] = useState<number>(0);
-  let [limit, setLimit] = useState<number>(40);
+  let limit = 20;
   let [newPokemons, setNewPokemons] = useState<Pokemon[]>([]);
-  let { pokemons } = useFetchData({ limit: limit, offset: offset } as any);
+  let { pokemons } = useFetchData({ offset: offset } as any);
 
   useEffect(() => {
-    setNewPokemons(pokemons);
-  }, [pokemons, newPokemons, setNewPokemons, offset, limit]);
+    setNewPokemons((prev) => [...prev, ...pokemons]);
+  }, [pokemons, offset]);
 
   if (newPokemons.length === 0) {
-    return <Text>Loading Pokemons</Text>;
+    return (
+      <SafeAreaView style={[{ flex: 1 }, globalStyles.center]}>
+        <ActivityIndicator size="large" color={colors.primary} />
+      </SafeAreaView>
+    );
   }
 
   return (
@@ -49,9 +59,6 @@ export default function Home() {
           <Pressable
             onPress={() => {
               setOffset((prev) => prev + limit);
-              setLimit((prev) => prev + limit);
-              alert(offset);
-              alert(limit);
             }}
           >
             <Text>Next</Text>
@@ -64,7 +71,7 @@ export default function Home() {
 
           return (
             <Link
-              key={poke.name}
+              key={poke.id}
               href={{ pathname: "/details", params: { name: poke.name } }}
               style={{ flex: 1 }}
             >

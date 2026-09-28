@@ -83,4 +83,9 @@ export const globalStyles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
   },
+
+  center: {
+    alignItems: "center",
+    justifyContent: "center",
+  },
 });

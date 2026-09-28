@@ -10,12 +10,17 @@ import {
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
+import * as Progress from "react-native-progress";
 import { SceneMap, TabBar, TabView } from "react-native-tab-view";
-// follwing is NativeTabs
+
 //hooks
 import useFetchData from "@/hooks/useFetchData";
+
+// styles
 import detailsStyles from "@/styles/detailsStyles";
 import { colors, globalStyles, typeColors, typeIcons } from "@/styles/global";
+
+// icons
 import FontAwesome6 from "@expo/vector-icons/FontAwesome6";
 
 const Details = () => {
@@ -30,7 +35,7 @@ const Details = () => {
   // console.log(params.name);
   if (!pokemon) {
     return (
-      <SafeAreaView>
+      <SafeAreaView style={[{ flex: 1 }, globalStyles.center]}>
         <ActivityIndicator size="large" color={colors.primary} />
       </SafeAreaView>
     );
@@ -40,14 +45,17 @@ const Details = () => {
   let imageSrc = pokemon.sprites.other["official-artwork"]
     .front_default as string;
 
-  const FirstRoute = useCallback(
+  const StatsRoute = useCallback(
     () => (
       <View style={{ flex: 1, paddingHorizontal: 16 }}>
-        <Text>Stats</Text>
         {pokemon.stats.map((stat) => (
           <View key={stat.stat.name}>
             <Text>{stat.stat.name}</Text>
-            {/* <ProgressBar value={stat.base_stat} maxValue={255} /> */}
+            <Progress.Bar progress={stat.base_stat / 100} />
+            {/* import * as Progress from 'react-native-progress';
+            
+             */}
+            <Text>{stat.base_stat}</Text>
           </View>
         ))}
       </View>
@@ -55,10 +63,17 @@ const Details = () => {
     [pokemon],
   );
 
-  const SecondRoute = useCallback(
+  const AboutRoute = useCallback(
     () => (
       <View style={{ flex: 1, paddingHorizontal: 16 }}>
-        <Text>About</Text>
+        <Text>Species: {pokemon.species.name}</Text>
+        <Text>
+          Types:{" "}
+          {pokemon.types.map((type) => (
+            <Text key={type.type.name}>{type.type.name} </Text>
+          ))}
+        </Text>
+
         <Text>Height: {pokemon.height / 10} m</Text>
         <Text>Weight: {pokemon.weight / 10} kg</Text>
       </View>
@@ -66,90 +81,107 @@ const Details = () => {
     [pokemon],
   );
 
+  const AbilitiesRoute = useCallback(
+    () => (
+      <View style={{ flex: 1, paddingHorizontal: 16 }}>
+        {pokemon.abilities.map((ability) => (
+          <Text key={ability.ability.name}>{ability.ability.name} </Text>
+        ))}
+      </View>
+    ),
+    [pokemon],
+  );
+
   const renderScene = SceneMap({
-    first: FirstRoute,
-    second: SecondRoute,
+    about: AboutRoute,
+    stats: StatsRoute,
+    abilities: AbilitiesRoute,
   });
 
   const routes = [
-    { key: "first", title: "First" },
-    { key: "second", title: "Second" },
+    { key: "about", title: "About" },
+    { key: "stats", title: "Stats" },
+    { key: "abilities", title: "Abilities" },
   ];
 
   return (
-    <SafeAreaView
-      style={{
-        flex: 1,
-        backgroundColor: typeColors[pokemonType as keyof typeof typeColors],
-      }}
-    >
-      <View
+    <ImageBackground source={require("@/assets/images/bg/1.jpg")}>
+      <SafeAreaView
         style={{
           flex: 1,
           backgroundColor: typeColors[pokemonType as keyof typeof typeColors],
-          borderRadius: 12,
         }}
       >
-        <View>
-          <View style={detailsStyles.headingContainer}>
-            <View style={detailsStyles.headingLeft}>
-              <Text style={detailsStyles.heading}>{pokemon.name}</Text>
-              <View style={globalStyles.typeRow}>
-                <Text style={detailsStyles.type}>{pokemonType}</Text>
-                <FontAwesome6
-                  name={typeIcons[pokemonType as keyof typeof typeIcons] as any}
-                  size={24}
-                  color={colors.txtLight}
-                />
+        <View
+          style={{
+            flex: 1,
+            backgroundColor: typeColors[pokemonType as keyof typeof typeColors],
+            borderRadius: 12,
+          }}
+        >
+          <View>
+            <View style={detailsStyles.headingContainer}>
+              <View style={detailsStyles.headingLeft}>
+                <Text style={detailsStyles.heading}>{pokemon.name}</Text>
+                <View style={globalStyles.typeRow}>
+                  <Text style={detailsStyles.type}>{pokemonType}</Text>
+                  <FontAwesome6
+                    name={
+                      typeIcons[pokemonType as keyof typeof typeIcons] as any
+                    }
+                    size={24}
+                    color={colors.txtLight}
+                  />
+                </View>
+              </View>
+              <View style={detailsStyles.headingRight}>
+                <Text style={detailsStyles.id}>#{pokemon.id}</Text>
               </View>
             </View>
-            <View style={detailsStyles.headingRight}>
-              <Text style={detailsStyles.id}>#{pokemon.id}</Text>
-            </View>
-          </View>
-          <ImageBackground
-            source={require("../../assets/images/pokeball1.png")}
-            resizeMode="cover"
-            imageStyle={{
-              opacity: 0.3,
-              width: 300,
-              height: 300,
-              position: "absolute",
-              right: 0,
-              left: "auto",
-            }}
-            style={detailsStyles.imageContainer}
-          >
-            <Image
-              source={{
-                uri: imageSrc,
+            <ImageBackground
+              source={require("../../assets/images/pokeball1.png")}
+              resizeMode="cover"
+              imageStyle={{
+                opacity: 0.3,
+                width: 300,
+                height: 300,
+                position: "absolute",
+                right: 0,
+                left: "auto",
               }}
-              style={detailsStyles.image}
-            />
-          </ImageBackground>
-        </View>
-        <View style={{ flex: 1, width: "100%" }}>
-          <TabView
-            navigationState={{ index, routes }}
-            renderScene={renderScene}
-            onIndexChange={setIndex}
-            initialLayout={{ width: layout.width }}
-            renderTabBar={(props) => (
-              <TabBar
-                {...props}
-                indicatorStyle={{ backgroundColor: colors.primary }}
-                style={{
-                  backgroundColor:
-                    typeColors[pokemonType as keyof typeof typeColors],
+              style={detailsStyles.imageContainer}
+            >
+              <Image
+                source={{
+                  uri: imageSrc,
                 }}
-                activeColor={colors.primary}
-                inactiveColor={colors.txtLight}
+                style={detailsStyles.image}
               />
-            )}
-          />
+            </ImageBackground>
+          </View>
+          <View style={{ flex: 1, width: "100%" }}>
+            <TabView
+              navigationState={{ index, routes }}
+              renderScene={renderScene}
+              onIndexChange={setIndex}
+              initialLayout={{ width: layout.width }}
+              renderTabBar={(props) => (
+                <TabBar
+                  {...props}
+                  indicatorStyle={{ backgroundColor: colors.primary }}
+                  style={{
+                    backgroundColor:
+                      typeColors[pokemonType as keyof typeof typeColors],
+                  }}
+                  activeColor={colors.primary}
+                  inactiveColor={colors.txtLight}
+                />
+              )}
+            />
+          </View>
         </View>
-      </View>
-    </SafeAreaView>
+      </SafeAreaView>
+    </ImageBackground>
   );
 };
 export default Details;

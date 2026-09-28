@@ -21,8 +21,6 @@ export default function Index() {
       resizeMode="cover"
       style={{
         flex: 1,
-        borderWidth: 1,
-        borderColor: "red",
       }}
       imageStyle={{
         opacity: 0.3,

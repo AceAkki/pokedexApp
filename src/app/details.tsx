@@ -2,7 +2,6 @@ import { useLocalSearchParams } from "expo-router";
 import { useCallback, useState } from "react";
 import {
   ActivityIndicator,
-  Dimensions,
   Image,
   ImageBackground,
   Text,
@@ -24,7 +23,6 @@ import { colors, globalStyles, typeColors, typeIcons } from "@/styles/global";
 // icons
 import FontAwesome6 from "@expo/vector-icons/FontAwesome6";
 
-const { width, height } = Dimensions.get("window");
 const Details = () => {
   const params = useLocalSearchParams();
   const currentName = Array.isArray(params?.name)
@@ -107,96 +105,79 @@ const Details = () => {
   ];
 
   return (
-    <ImageBackground
-      source={require("@/assets/images/bg/1.jpg")}
-      resizeMode="cover"
+    <SafeAreaView
       style={{
         flex: 1,
-        borderWidth: 1,
-        borderColor: "red",
-        width: width,
-        height: height,
-      }}
-      imageStyle={{
-        opacity: 0.3,
+        backgroundColor: typeColors[pokemonType as keyof typeof typeColors],
       }}
     >
-      <SafeAreaView
+      <View
         style={{
           flex: 1,
           backgroundColor: typeColors[pokemonType as keyof typeof typeColors],
+          borderRadius: 12,
         }}
       >
-        <View
-          style={{
-            flex: 1,
-            backgroundColor: typeColors[pokemonType as keyof typeof typeColors],
-            borderRadius: 12,
-          }}
-        >
-          <View>
-            <View style={detailsStyles.headingContainer}>
-              <View style={detailsStyles.headingLeft}>
-                <Text style={detailsStyles.heading}>{pokemon.name}</Text>
-                <View style={globalStyles.typeRow}>
-                  <Text style={detailsStyles.type}>{pokemonType}</Text>
-                  <FontAwesome6
-                    name={
-                      typeIcons[pokemonType as keyof typeof typeIcons] as any
-                    }
-                    size={24}
-                    color={colors.txtLight}
-                  />
-                </View>
-              </View>
-              <View style={detailsStyles.headingRight}>
-                <Text style={detailsStyles.id}>#{pokemon.id}</Text>
+        <View>
+          <View style={detailsStyles.headingContainer}>
+            <View style={detailsStyles.headingLeft}>
+              <Text style={detailsStyles.heading}>{pokemon.name}</Text>
+              <View style={globalStyles.typeRow}>
+                <Text style={detailsStyles.type}>{pokemonType}</Text>
+                <FontAwesome6
+                  name={typeIcons[pokemonType as keyof typeof typeIcons] as any}
+                  size={24}
+                  color={colors.txtLight}
+                />
               </View>
             </View>
-            <ImageBackground
-              source={require("../../assets/images/pokeball1.png")}
-              resizeMode="cover"
-              imageStyle={{
-                opacity: 0.3,
-                width: 300,
-                height: 300,
-                position: "absolute",
-                right: 0,
-                left: "auto",
+            <View style={detailsStyles.headingRight}>
+              <Text style={detailsStyles.id}>#{pokemon.id}</Text>
+            </View>
+          </View>
+          <ImageBackground
+            source={require("../../assets/images/pokeball1.png")}
+            resizeMode="cover"
+            imageStyle={{
+              opacity: 0.3,
+              width: 300,
+              height: 300,
+              position: "absolute",
+              right: 0,
+              left: "auto",
+            }}
+            style={detailsStyles.imageContainer}
+          >
+            <Image
+              source={{
+                uri: imageSrc,
               }}
-              style={detailsStyles.imageContainer}
-            >
-              <Image
-                source={{
-                  uri: imageSrc,
-                }}
-                style={detailsStyles.image}
-              />
-            </ImageBackground>
-          </View>
-          <View style={{ flex: 1, width: "100%" }}>
-            <TabView
-              navigationState={{ index, routes }}
-              renderScene={renderScene}
-              onIndexChange={setIndex}
-              initialLayout={{ width: layout.width }}
-              renderTabBar={(props) => (
-                <TabBar
-                  {...props}
-                  indicatorStyle={{ backgroundColor: colors.primary }}
-                  style={{
-                    backgroundColor:
-                      typeColors[pokemonType as keyof typeof typeColors],
-                  }}
-                  activeColor={colors.primary}
-                  inactiveColor={colors.txtLight}
-                />
-              )}
+              style={detailsStyles.image}
             />
-          </View>
+          </ImageBackground>
         </View>
-      </SafeAreaView>
-    </ImageBackground>
+        <View style={{ flex: 1, width: "100%" }}>
+          <TabView
+            navigationState={{ index, routes }}
+            renderScene={renderScene}
+            onIndexChange={setIndex}
+            initialLayout={{ width: layout.width }}
+            renderTabBar={(props) => (
+              <TabBar
+                {...props}
+                indicatorStyle={{ backgroundColor: colors.primary }}
+                style={{
+                  backgroundColor:
+                    typeColors[pokemonType as keyof typeof typeColors],
+                }}
+                activeColor={colors.primary}
+                inactiveColor={colors.txtLight}
+              />
+            )}
+          />
+        </View>
+      </View>
+    </SafeAreaView>
   );
 };
 export default Details;

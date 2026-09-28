@@ -2,6 +2,7 @@ import { Link } from "expo-router";
 import { useEffect, useState } from "react";
 import {
   ActivityIndicator,
+  Dimensions,
   FlatList,
   Image,
   ImageBackground,
@@ -25,6 +26,7 @@ import FontAwesome6 from "@expo/vector-icons/FontAwesome6";
 // types
 import type { Pokemon } from "@/types/pokemonType";
 
+const { width, height } = Dimensions.get("window");
 export default function Home() {
   let [offset, setOffset] = useState<number>(0);
   let limit = 20;
@@ -44,85 +46,99 @@ export default function Home() {
   }
 
   return (
-    <SafeAreaView>
-      <FlatList
-        data={newPokemons}
-        numColumns={2}
-        columnWrapperStyle={{ gap: 16 }}
-        contentContainerStyle={{
-          gap: 16,
-          paddingTop: 20,
-          paddingHorizontal: 20,
-          paddingBottom: 50,
-        }}
-        ListFooterComponent={
-          <Pressable
-            onPress={() => {
-              setOffset((prev) => prev + limit);
-            }}
-          >
-            <Text>Next</Text>
-          </Pressable>
-        }
-        renderItem={({ item: poke }) => {
-          let type = poke.types[0].type.name;
-          let imageSrc = poke.sprites.other["official-artwork"]
-            .front_default as string;
+    <ImageBackground
+      source={require("@/assets/images/bg/1.jpg")}
+      resizeMode="cover"
+      style={{
+        flex: 1,
 
-          return (
-            <Link
-              key={poke.id}
-              href={{ pathname: "/details", params: { name: poke.name } }}
-              style={{ flex: 1 }}
+        width: width,
+        height: height,
+      }}
+      imageStyle={{
+        opacity: 0.3,
+      }}
+    >
+      <SafeAreaView>
+        <FlatList
+          data={newPokemons}
+          numColumns={2}
+          columnWrapperStyle={{ gap: 16 }}
+          contentContainerStyle={{
+            gap: 16,
+            paddingTop: 20,
+            paddingHorizontal: 20,
+            paddingBottom: 50,
+          }}
+          ListFooterComponent={
+            <Pressable
+              onPress={() => {
+                setOffset((prev) => prev + limit);
+              }}
             >
-              <ImageBackground
-                style={[
-                  homeStyles.pokemonView,
-                  {
-                    backgroundColor:
-                      typeColors[type as keyof typeof typeColors],
-                    borderColor: typeColors[type as keyof typeof typeColors],
-                    borderWidth: 2,
-                  },
-                ]}
-              >
-                <Text style={[detailsStyles.heading, homeStyles.heading]}>
-                  {poke.name}
-                </Text>
+              <Text>Next</Text>
+            </Pressable>
+          }
+          renderItem={({ item: poke }) => {
+            let type = poke.types[0].type.name;
+            let imageSrc = poke.sprites.other["official-artwork"]
+              .front_default as string;
 
-                <View style={globalStyles.innerRow}>
-                  <View style={homeStyles.txtContainer}>
-                    <FontAwesome6
-                      name={typeIcons[type as keyof typeof typeIcons] as any}
-                      size={24}
-                      color={colors.txtLight}
-                    />
-                    {/* <Text style={[detailsStyles.type, homeStyles.type]}>
+            return (
+              <Link
+                key={poke.id}
+                href={{ pathname: "/details", params: { name: poke.name } }}
+                style={{ flex: 1 }}
+              >
+                <ImageBackground
+                  style={[
+                    homeStyles.pokemonView,
+                    {
+                      backgroundColor:
+                        typeColors[type as keyof typeof typeColors],
+                      borderColor: typeColors[type as keyof typeof typeColors],
+                      borderWidth: 2,
+                    },
+                  ]}
+                >
+                  <Text style={[detailsStyles.heading, homeStyles.heading]}>
+                    {poke.name}
+                  </Text>
+
+                  <View style={globalStyles.innerRow}>
+                    <View style={homeStyles.txtContainer}>
+                      <FontAwesome6
+                        name={typeIcons[type as keyof typeof typeIcons] as any}
+                        size={24}
+                        color={colors.txtLight}
+                      />
+                      {/* <Text style={[detailsStyles.type, homeStyles.type]}>
                       {type}
                     </Text> */}
+                    </View>
+                    <ImageBackground
+                      style={homeStyles.imgContainer}
+                      source={require("../../assets/images/pokeball1.png")}
+                      resizeMode="cover"
+                      imageStyle={{ opacity: 0.3, width: 100, height: 100 }}
+                    >
+                      <Image
+                        source={{
+                          uri: imageSrc,
+                        }}
+                        style={homeStyles.image}
+                      />
+                    </ImageBackground>
                   </View>
-                  <ImageBackground
-                    style={homeStyles.imgContainer}
-                    source={require("../../assets/images/pokeball1.png")}
-                    resizeMode="cover"
-                    imageStyle={{ opacity: 0.3, width: 100, height: 100 }}
-                  >
-                    <Image
-                      source={{
-                        uri: imageSrc,
-                      }}
-                      style={homeStyles.image}
-                    />
-                  </ImageBackground>
-                </View>
-              </ImageBackground>
-            </Link>
-          );
-        }}
-        keyExtractor={(poke) => poke.name}
-      />
+                </ImageBackground>
+              </Link>
+            );
+          }}
+          keyExtractor={(poke) => poke.name}
+        />
 
-      <View></View>
-    </SafeAreaView>
+        <View></View>
+      </SafeAreaView>
+    </ImageBackground>
   );
 }

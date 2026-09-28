@@ -2,17 +2,15 @@ import { globalStyles } from "@/styles/global";
 import indexStyles from "@/styles/indexStyles";
 import { useRouter } from "expo-router";
 import {
-  Dimensions,
   Image,
   ImageBackground,
   Pressable,
   ScrollView,
   Text,
-  View,
+  View
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-const { width, height } = Dimensions.get("window");
 export default function Index() {
   const router = useRouter();
   return (

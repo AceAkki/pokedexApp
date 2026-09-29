@@ -7,14 +7,15 @@ interface hookType {
   limit?: number;
   offset?: number;
 }
-const useFetchData = ({ name, id, limit, offset }: hookType) => {
+const useFetchData = (options: hookType) => {
+  let { name, id, limit = 4, offset = 0 } = options;
   let [pokemons, setPokemons] = useState<Pokemon[]>([]);
   let [pokemon, setPokemon] = useState<Pokemon | null>(null);
 
   useEffect(() => {
-    fetchPokemons({ name, id, limit, offset });
-    // console.log(pokemon);
-  }, []);
+    console.log(limit, offset);
+    fetchPokemons({ name: name, id: id, limit: limit, offset: offset });
+  }, [limit, offset]);
 
   async function fetchPokemons({ name, id, limit, offset }: hookType) {
     const hasParam = name || id;
@@ -24,6 +25,7 @@ const useFetchData = ({ name, id, limit, offset }: hookType) => {
         ? `https://pokeapi.co/api/v2/pokemon/${id}`
         : `https://pokeapi.co/api/v2/pokemon/?limit=${limit}&offset=${offset}`;
     try {
+      console.log(url, "url");
       const response = await fetch(url);
       if (response.ok) {
         const data = await response.json();

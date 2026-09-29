@@ -34,7 +34,7 @@ export default function Home() {
   let { pokemons } = useFetchData({ offset: offset } as any);
 
   useEffect(() => {
-    setNewPokemons((prev) => [...prev, ...pokemons]);
+    setNewPokemons(pokemons);
   }, [pokemons, offset]);
 
   if (newPokemons.length === 0) {

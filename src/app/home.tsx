@@ -75,7 +75,7 @@ export default function Home() {
               <Pressable
                 onPress={() => {
                   setOffset((prev) => {
-                    return prev > limit ? prev - limit : prev;
+                    return prev > 0 ? prev - limit : prev;
                   });
                 }}
               >

@@ -29,7 +29,7 @@ import type { Pokemon } from "@/types/pokemonType";
 const { width, height } = Dimensions.get("window");
 export default function Home() {
   let [offset, setOffset] = useState<number>(0);
-  let limit = 20;
+  let limit = 4;
   let [newPokemons, setNewPokemons] = useState<Pokemon[]>([]);
   let { pokemons } = useFetchData({ offset: offset } as any);
 
@@ -134,7 +134,7 @@ export default function Home() {
               </Link>
             );
           }}
-          keyExtractor={(poke) => poke.name}
+          keyExtractor={(poke) => poke.id.toString()}
         />
 
         <View></View>

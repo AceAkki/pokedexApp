@@ -29,7 +29,7 @@ import type { Pokemon } from "@/types/pokemonType";
 const { width, height } = Dimensions.get("window");
 export default function Home() {
   let [offset, setOffset] = useState<number>(0);
-  let limit = 4;
+  let limit = 6;
   let [newPokemons, setNewPokemons] = useState<Pokemon[]>([]);
   let { pokemons } = useFetchData({ offset: offset } as any);
 
@@ -47,7 +47,7 @@ export default function Home() {
 
   return (
     <ImageBackground
-      source={require("@/assets/images/bg/1.jpg")}
+      source={require("@/assets/images/bg/4.jpg")}
       resizeMode="cover"
       style={{
         flex: 1,
@@ -56,7 +56,7 @@ export default function Home() {
         height: height,
       }}
       imageStyle={{
-        opacity: 0.3,
+        opacity: 0.2,
       }}
     >
       <SafeAreaView>
@@ -71,13 +71,24 @@ export default function Home() {
             paddingBottom: 50,
           }}
           ListFooterComponent={
-            <Pressable
-              onPress={() => {
-                setOffset((prev) => prev + limit);
-              }}
-            >
-              <Text>Next</Text>
-            </Pressable>
+            <View>
+              <Pressable
+                onPress={() => {
+                  setOffset((prev) => {
+                    return prev > limit ? prev - limit : prev;
+                  });
+                }}
+              >
+                <Text>Previous</Text>
+              </Pressable>
+              <Pressable
+                onPress={() => {
+                  setOffset((prev) => prev + limit);
+                }}
+              >
+                <Text>Next</Text>
+              </Pressable>
+            </View>
           }
           renderItem={({ item: poke }) => {
             let type = poke.types[0].type.name;

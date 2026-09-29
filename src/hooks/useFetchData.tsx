@@ -8,7 +8,7 @@ interface hookType {
   offset?: number;
 }
 const useFetchData = (options: hookType) => {
-  let { name, id, limit = 4, offset = 0 } = options;
+  let { name, id, limit = 6, offset = 0 } = options;
   let [pokemons, setPokemons] = useState<Pokemon[]>([]);
   let [pokemon, setPokemon] = useState<Pokemon | null>(null);
 

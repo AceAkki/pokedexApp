@@ -7,7 +7,7 @@ import {
   Pressable,
   ScrollView,
   Text,
-  View
+  View,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
@@ -15,7 +15,7 @@ export default function Index() {
   const router = useRouter();
   return (
     <ImageBackground
-      source={require("@/assets/images/bg/1.jpg")}
+      source={require("@/assets/images/bg/2.jpg")}
       resizeMode="cover"
       style={{
         flex: 1,

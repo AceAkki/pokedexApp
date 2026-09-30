@@ -1,16 +1,21 @@
 import { StyleSheet } from "react-native";
 
 export const colors = {
-  primary: "#007AFF",
-  secondary: "#00778",
+  primary: "#EE1515",
+  secondary: "#222224",
+  tertiary: "#F0F0F0",
+
   background: "#F2F2F7",
   backgroundLight: "#F5F5F599",
 
+  txt: "#1D2128",
   txtLight: "#F2F2F7",
-  text: "#1D2128",
 
+  disabled: "#CCCECF",
+  accent: "#FFDE00",
   alert: "#D90000",
 };
+
 export const typeColors = {
   normal: "#A9A8C4",
   fire: "#fb7e7b",
@@ -70,7 +75,7 @@ export const globalStyles = StyleSheet.create({
   titleText: {
     fontSize: 24,
     fontWeight: "bold",
-    color: colors.text,
+    color: colors.txt,
   },
 
   typeRow: {
@@ -88,4 +93,23 @@ export const globalStyles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
+
+  buttonMain: {
+    backgroundColor: colors.secondary,
+    borderRadius: 100,
+    boxShadow:
+      "rgba(238, 21, 21, .2) 0 -25px 18px -14px inset,rgba(238, 21, 21, .15) 0 1px 2px,rgba(238, 21, 21, .15) 0 2px 4px,rgba(238, 21, 21, .15) 0 4px 8px,rgba(238, 21, 21, .15) 0 8px 16px,rgba(238, 21, 21, .15) 0 16px 32px",
+    cursor: "pointer",
+    paddingVertical: 7,
+    paddingHorizontal: 20,
+    textAlign: "center",
+    fontSize: 16,
+    alignSelf: "flex-start",
+    width: 120,
+  },
+  buttonMainTxt: {
+    color: colors.tertiary,
+  },
+
+  // buttonMain:hover { box-shadow: rgba(44,187,99,.35) 0 -25px 18px -14px inset,rgba(44,187,99,.25) 0 1px 2px,rgba(44,187,99,.25) 0 2px 4px,rgba(44,187,99,.25) 0 4px 8px,rgba(44,187,99,.25) 0 8px 16px,rgba(44,187,99,.25) 0 16px 32px; transform: scale(1.05) rotate(-1deg);}
 });

@@ -13,7 +13,6 @@ const detailsStyles = StyleSheet.create({
     fontFamily: "Oswald-Bold",
     fontSize: 50,
     color: colors.txtLight,
-    backgroundColor: colors.secondary,
     textTransform: "capitalize",
   },
   headingLeft: {
@@ -27,7 +26,7 @@ const detailsStyles = StyleSheet.create({
     fontSize: 15,
     fontFamily: "Oswald-Medium",
     textTransform: "uppercase",
-    color: colors.text,
+    color: colors.txt,
     paddingVertical: 5,
     paddingHorizontal: 10,
     borderRadius: 15,

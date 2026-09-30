@@ -2,13 +2,12 @@ import { Link } from "expo-router";
 import { useEffect, useState } from "react";
 import {
   ActivityIndicator,
-  Dimensions,
   FlatList,
   Image,
   ImageBackground,
   Pressable,
   Text,
-  View,
+  View
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
@@ -26,12 +25,11 @@ import FontAwesome6 from "@expo/vector-icons/FontAwesome6";
 // types
 import type { Pokemon } from "@/types/pokemonType";
 
-const { width, height } = Dimensions.get("window");
 export default function Home() {
+  let limit = 8;
   let [offset, setOffset] = useState<number>(0);
-  let limit = 6;
   let [newPokemons, setNewPokemons] = useState<Pokemon[]>([]);
-  let { pokemons } = useFetchData({ offset: offset } as any);
+  let { pokemons } = useFetchData({ limit: limit, offset: offset } as any);
 
   useEffect(() => {
     setNewPokemons(pokemons);
@@ -51,9 +49,6 @@ export default function Home() {
       resizeMode="cover"
       style={{
         flex: 1,
-
-        width: width,
-        height: height,
       }}
       imageStyle={{
         opacity: 0.2,
@@ -71,22 +66,34 @@ export default function Home() {
             paddingBottom: 50,
           }}
           ListFooterComponent={
-            <View>
+            <View style={[globalStyles.typeRow, globalStyles.center]}>
               <Pressable
+                disabled={offset === 0}
                 onPress={() => {
                   setOffset((prev) => {
                     return prev > 0 ? prev - limit : prev;
                   });
                 }}
+                style={({ pressed }) => [
+                  {
+                    backgroundColor: offset === 0 ? "#000" : "#999",
+                    opacity: pressed ? 0.7 : 1,
+                  },
+                  globalStyles.buttonMain,
+                ]}
               >
-                <Text>Previous</Text>
+                <Text style={globalStyles.buttonMainTxt}>Previous</Text>
               </Pressable>
               <Pressable
                 onPress={() => {
                   setOffset((prev) => prev + limit);
                 }}
+                style={({ pressed }) => [
+                  { opacity: pressed ? 0.2 : 1 },
+                  globalStyles.buttonMain,
+                ]}
               >
-                <Text>Next</Text>
+                <Text style={globalStyles.buttonMainTxt}>Next</Text>
               </Pressable>
             </View>
           }

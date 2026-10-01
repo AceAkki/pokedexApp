@@ -56,6 +56,11 @@ const detailsStyles = StyleSheet.create({
     fontSize: 20,
     paddingRight: 5,
   },
+  detailsTab: {
+    flex: 1,
+    paddingHorizontal: 16,
+    backgroundColor: colors.secondary,
+  },
 });
 
 export default detailsStyles;

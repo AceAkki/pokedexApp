@@ -47,7 +47,7 @@ const Details = () => {
 
   const StatsRoute = useCallback(
     () => (
-      <View style={{ flex: 1, paddingHorizontal: 16 }}>
+      <View style={detailsStyles.detailsTab}>
         {pokemon.stats.map((stat) => (
           <View key={stat.stat.name}>
             <Text>{stat.stat.name}</Text>
@@ -177,13 +177,17 @@ const Details = () => {
             renderTabBar={(props) => (
               <TabBar
                 {...props}
-                indicatorStyle={{ backgroundColor: colors.primary }}
                 style={{
                   backgroundColor:
                     typeColors[pokemonType as keyof typeof typeColors],
                 }}
-                activeColor={colors.primary}
-                inactiveColor={colors.txtLight}
+                indicatorStyle={{
+                  backgroundColor: colors.secondary,
+                  borderRadius: 16,
+                  height: "100%",
+                }}
+                activeColor={colors.txtLight}
+                inactiveColor={colors.txt}
               />
             )}
           />

@@ -28,6 +28,8 @@ const useFetchData = (options: hookType) => {
       if (response.ok) {
         const data = await response.json();
 
+        const detailedData = await fetchPokemonDetails({ name: name, id: id });
+
         const finalData = !hasParam
           ? await Promise.all(
               data.results.map(async (pokemon: any) => {
@@ -38,9 +40,25 @@ const useFetchData = (options: hookType) => {
                 };
               }),
             )
-          : data;
+          : { ...data, ...detailedData };
 
         !hasParam ? setPokemons(finalData) : setPokemon(finalData);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  async function fetchPokemonDetails({ name, id }: hookType) {
+    const url = name
+      ? `https://pokeapi.co/api/v2/pokemon-species/${name}`
+      : `https://pokeapi.co/api/v2/pokemon-species/${id}`;
+
+    try {
+      const response = await fetch(url);
+      if (response.ok) {
+        const data = await response.json();
+        return data;
       }
     } catch (error) {
       console.log(error);

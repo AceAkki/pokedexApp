@@ -97,8 +97,8 @@ export const globalStyles = StyleSheet.create({
   buttonMain: {
     backgroundColor: colors.secondary,
     borderRadius: 100,
-    boxShadow:
-      "rgba(238, 21, 21, .2) 0 -25px 18px -14px inset,rgba(238, 21, 21, .15) 0 1px 2px,rgba(238, 21, 21, .15) 0 2px 4px,rgba(238, 21, 21, .15) 0 4px 8px,rgba(238, 21, 21, .15) 0 8px 16px,rgba(238, 21, 21, .15) 0 16px 32px",
+    // boxShadow:
+    //   "rgba(238, 21, 21, .2) 0 -25px 18px -14px inset,rgba(238, 21, 21, .15) 0 1px 2px,rgba(238, 21, 21, .15) 0 2px 4px,rgba(238, 21, 21, .15) 0 4px 8px,rgba(238, 21, 21, .15) 0 8px 16px,rgba(238, 21, 21, .15) 0 16px 32px",
     cursor: "pointer",
     paddingVertical: 7,
     paddingHorizontal: 20,

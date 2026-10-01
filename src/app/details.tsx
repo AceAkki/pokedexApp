@@ -65,17 +65,29 @@ const Details = () => {
 
   const AboutRoute = useCallback(
     () => (
-      <View style={{ flex: 1, paddingHorizontal: 16 }}>
-        <Text>Species: {pokemon.species.name}</Text>
-        <Text>
-          Types:{" "}
+      <View style={{ flex: 1, paddingHorizontal: 16, paddingVertical: 20 }}>
+        <Text style={detailsStyles.detailsWrap}>
+          <Text style={detailsStyles.detailsLabel}> Species:</Text>
+          {pokemon.species.name}
+        </Text>
+
+        <Text style={detailsStyles.detailsWrap}>
+          <Text style={detailsStyles.detailsLabel}> Types: </Text>
+
           {pokemon.types.map((type) => (
             <Text key={type.type.name}>{type.type.name} </Text>
           ))}
         </Text>
 
-        <Text>Height: {pokemon.height / 10} m</Text>
-        <Text>Weight: {pokemon.weight / 10} kg</Text>
+        <Text style={detailsStyles.detailsWrap}>
+          <Text style={detailsStyles.detailsLabel}> Height: </Text>
+          {pokemon.height / 10} m
+        </Text>
+
+        <Text style={detailsStyles.detailsWrap}>
+          <Text style={detailsStyles.detailsLabel}> Weight: </Text>
+          {pokemon.weight / 10} kg
+        </Text>
       </View>
     ),
     [pokemon],

@@ -45,6 +45,17 @@ const detailsStyles = StyleSheet.create({
     aspectRatio: 1,
     alignSelf: "center",
   },
+  detailsWrap: {
+    fontFamily: "Oswald-Light",
+    fontSize: 20,
+    textTransform: "capitalize",
+    padding: 10,
+  },
+  detailsLabel: {
+    fontFamily: "Oswald-Regular",
+    fontSize: 20,
+    paddingRight: 5,
+  },
 });
 
 export default detailsStyles;

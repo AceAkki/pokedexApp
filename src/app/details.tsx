@@ -186,12 +186,11 @@ const Details = () => {
                 style={{
                   backgroundColor:
                     typeColors[pokemonType as keyof typeof typeColors],
-                  borderRadius: 30,
                 }}
                 indicatorStyle={{
-                  backgroundColor: colors.secondary,
+                  backgroundColor: colors.primary,
                   borderTopRightRadius: index === 1 ? 26 : index === 2 ? 0 : 26,
-                  borderTopLeftRadius: index === 1 ? 26 : index === 2 ? 0 : 26,
+                  borderTopLeftRadius: index === 1 ? 26 : index === 2 ? 26 : 0,
                   height: "100%",
                 }}
                 activeColor={colors.txtLight}

@@ -59,7 +59,7 @@ const detailsStyles = StyleSheet.create({
   detailsTab: {
     flex: 1,
     paddingHorizontal: 16,
-    backgroundColor: colors.secondary,
+    backgroundColor: colors.primary,
   },
 });
 

@@ -51,10 +51,10 @@ export default function RootLayout() {
           title: "Details",
           headerShown: false,
           headerBackButtonDisplayMode: "minimal",
-          presentation: "formSheet",
-          sheetAllowedDetents: [0.7, 1],
-          sheetGrabberVisible: true,
-          sheetCornerRadius: 30,
+          // presentation: "formSheet",
+          // sheetAllowedDetents: [0.7, 1],
+          // sheetGrabberVisible: true,
+          // sheetCornerRadius: 30,
         })}
       />
     </Stack>

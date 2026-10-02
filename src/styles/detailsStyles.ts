@@ -4,14 +4,14 @@ import { StyleSheet } from "react-native";
 const detailsStyles = StyleSheet.create({
   headingContainer: {
     width: "100%",
-    paddingVertical: 20,
+    paddingVertical: 14,
     paddingHorizontal: 30,
     flexDirection: "row",
     justifyContent: "space-between",
   },
   heading: {
     fontFamily: "Oswald-Bold",
-    fontSize: 50,
+    fontSize: 35,
     color: colors.txtLight,
     textTransform: "capitalize",
   },
@@ -27,7 +27,7 @@ const detailsStyles = StyleSheet.create({
     fontFamily: "Oswald-Medium",
     textTransform: "uppercase",
     color: colors.txt,
-    paddingVertical: 5,
+    paddingVertical: 2,
     paddingHorizontal: 10,
     borderRadius: 15,
     backgroundColor: colors.background,
@@ -40,8 +40,8 @@ const detailsStyles = StyleSheet.create({
   },
   imageContainer: { alignItems: "center", justifyContent: "center" },
   image: {
-    width: 300,
-    height: 300,
+    width: 250,
+    height: 250,
     aspectRatio: 1,
     alignSelf: "center",
   },

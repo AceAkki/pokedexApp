@@ -2,6 +2,7 @@ import { useLocalSearchParams } from "expo-router";
 import { useCallback, useState } from "react";
 import {
   ActivityIndicator,
+  Dimensions,
   Image,
   ImageBackground,
   Text,
@@ -31,6 +32,7 @@ const Details = () => {
   let { pokemon } = useFetchData({ name: currentName });
 
   const layout = useWindowDimensions();
+  const { width, height } = Dimensions.get("window");
   const [index, setIndex] = useState(0);
   // console.log(params.name);
   if (!pokemon) {
@@ -44,6 +46,9 @@ const Details = () => {
   let pokemonType = pokemon.types[0].type.name;
   let imageSrc = pokemon.sprites.other["official-artwork"]
     .front_default as string;
+  const englishEntry = pokemon.description.find(
+    (entry) => entry.language.name === "en",
+  );
 
   const StatsRoute = useCallback(
     () => (
@@ -66,6 +71,15 @@ const Details = () => {
   const AboutRoute = useCallback(
     () => (
       <View style={detailsStyles.detailsTab}>
+        {/* <Text>
+          {englishEntry &&
+            englishEntry.flavor_text
+              .replace(/\f/g, "\n")
+              .replace(/\u00ad/g, "")
+              .replace(/\n/g, " ")
+              .replace(/\r/g, " ")}
+        </Text> */}
+
         <Text style={detailsStyles.detailsWrap}>
           <Text style={detailsStyles.detailsLabel}> Species:</Text>
           {pokemon.species.name}
@@ -152,8 +166,8 @@ const Details = () => {
             resizeMode="cover"
             imageStyle={{
               opacity: 0.3,
-              width: 300,
-              height: 300,
+              width: 250,
+              height: 250,
               position: "absolute",
               right: 0,
               left: "auto",
@@ -186,6 +200,7 @@ const Details = () => {
                 style={{
                   backgroundColor:
                     typeColors[pokemonType as keyof typeof typeColors],
+                  shadowColor: "transparent",
                 }}
                 indicatorStyle={{
                   backgroundColor: colors.primary,

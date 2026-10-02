@@ -1,4 +1,4 @@
-import type { Pokemon } from "@/types/pokemonType";
+import type { CompletePokemonData, PokemonSpecies } from "@/types/pokemonType";
 import { useEffect, useState } from "react";
 
 interface hookType {
@@ -9,8 +9,8 @@ interface hookType {
 }
 const useFetchData = (options: hookType) => {
   let { name, id, limit = 6, offset = 0 } = options;
-  let [pokemons, setPokemons] = useState<Pokemon[]>([]);
-  let [pokemon, setPokemon] = useState<Pokemon | null>(null);
+  let [pokemons, setPokemons] = useState<CompletePokemonData[]>([]);
+  let [pokemon, setPokemon] = useState<CompletePokemonData | null>(null);
 
   useEffect(() => {
     fetchPokemons({ name: name, id: id, limit: limit, offset: offset });
@@ -28,7 +28,10 @@ const useFetchData = (options: hookType) => {
       if (response.ok) {
         const data = await response.json();
 
-        const detailedData = await fetchPokemonDetails({ name: name, id: id });
+        const detailedData: PokemonSpecies = await fetchPokemonDetails({
+          name: name,
+          id: id,
+        });
 
         const finalData = !hasParam
           ? await Promise.all(
@@ -40,8 +43,12 @@ const useFetchData = (options: hookType) => {
                 };
               }),
             )
-          : { ...data, ...detailedData };
-
+          : {
+              ...data,
+              description: detailedData.flavor_text_entries,
+              names: detailedData.names,
+            };
+        console.log(finalData);
         !hasParam ? setPokemons(finalData) : setPokemon(finalData);
       }
     } catch (error) {

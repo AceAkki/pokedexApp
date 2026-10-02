@@ -65,7 +65,7 @@ const Details = () => {
 
   const AboutRoute = useCallback(
     () => (
-      <View style={{ flex: 1, paddingHorizontal: 16, paddingVertical: 20 }}>
+      <View style={detailsStyles.detailsTab}>
         <Text style={detailsStyles.detailsWrap}>
           <Text style={detailsStyles.detailsLabel}> Species:</Text>
           {pokemon.species.name}
@@ -95,7 +95,7 @@ const Details = () => {
 
   const AbilitiesRoute = useCallback(
     () => (
-      <View style={{ flex: 1, paddingHorizontal: 16 }}>
+      <View style={detailsStyles.detailsTab}>
         {pokemon.abilities.map((ability) => (
           <Text key={ability.ability.name}>{ability.ability.name} </Text>
         ))}
@@ -174,16 +174,24 @@ const Details = () => {
             renderScene={renderScene}
             onIndexChange={setIndex}
             initialLayout={{ width: layout.width }}
+            commonOptions={{
+              labelStyle: {
+                fontSize: 18,
+                fontWeight: "bold",
+              },
+            }}
             renderTabBar={(props) => (
               <TabBar
                 {...props}
                 style={{
                   backgroundColor:
                     typeColors[pokemonType as keyof typeof typeColors],
+                  borderRadius: 30,
                 }}
                 indicatorStyle={{
                   backgroundColor: colors.secondary,
-                  borderRadius: 16,
+                  borderTopRightRadius: index === 1 ? 26 : index === 2 ? 0 : 26,
+                  borderTopLeftRadius: index === 1 ? 26 : index === 2 ? 0 : 26,
                   height: "100%",
                 }}
                 activeColor={colors.txtLight}

@@ -48,7 +48,7 @@ const useFetchData = (options: hookType) => {
               description: detailedData.flavor_text_entries,
               names: detailedData.names,
             };
-        console.log(finalData);
+
         !hasParam ? setPokemons(finalData) : setPokemon(finalData);
       }
     } catch (error) {

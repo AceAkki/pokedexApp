@@ -45,7 +45,33 @@ const detailsStyles = StyleSheet.create({
     aspectRatio: 1,
     alignSelf: "center",
   },
+  tabBar: {
+    shadowColor: "transparent",
+    marginVertical: 10,
+    marginHorizontal: 40,
+  },
+  tabIndicator: {
+    backgroundColor: colors.primary,
+    borderRadius: 16,
+    height: "100%",
+    alignItems: "center",
+    paddingBottom: 5,
+    textDecorationLine: "underline",
+    textDecorationStyle: "solid",
+  },
+  tabLabel: {
+    fontFamily: "Oswald-Medium",
+    fontSize: 20,
+  },
+  detailsTab: {
+    paddingVertical: 20,
+    paddingHorizontal: 16,
+    marginHorizontal: 15,
+    backgroundColor: colors.background,
+    borderRadius: 16,
+  },
   detailsWrap: {
+    flex: 1,
     fontFamily: "Oswald-Light",
     fontSize: 20,
     textTransform: "capitalize",
@@ -53,13 +79,16 @@ const detailsStyles = StyleSheet.create({
   },
   detailsLabel: {
     fontFamily: "Oswald-Regular",
-    fontSize: 20,
+    opacity: 0.8,
+    fontSize: 25,
+    textTransform: "uppercase",
     paddingRight: 5,
   },
-  detailsTab: {
-    flex: 1,
-    paddingHorizontal: 16,
-    backgroundColor: colors.primary,
+  detailsValue: {
+    fontFamily: "Oswald-ExtraLight",
+    fontSize: 30,
+    paddingRight: 5,
+    textTransform: "capitalize",
   },
 });
 

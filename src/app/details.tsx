@@ -68,44 +68,59 @@ const Details = () => {
     [pokemon],
   );
 
-  const AboutRoute = useCallback(
-    () => (
-      <View style={detailsStyles.detailsTab}>
-        {/* <Text>
-          {englishEntry &&
-            englishEntry.flavor_text
-              .replace(/\f/g, "\n")
-              .replace(/\u00ad/g, "")
-              .replace(/\n/g, " ")
-              .replace(/\r/g, " ")}
-        </Text> */}
+  const AboutRoute = useCallback(() => {
+    let formattedTxt = englishEntry
+      ? englishEntry.flavor_text
+          .replace(/\f/g, "\n")
+          .replace(/\u00ad/g, "")
+          .replace(/\n/g, " ")
+          .replace(/\r/g, " ")
+      : "";
 
-        <Text style={detailsStyles.detailsWrap}>
-          <Text style={detailsStyles.detailsLabel}> Species:</Text>
-          {pokemon.species.name}
-        </Text>
+    return (
+      <View style={[detailsStyles.detailsTab]}>
+        <Text style={detailsStyles.detailsWrap}>{formattedTxt}</Text>
 
-        <Text style={detailsStyles.detailsWrap}>
-          <Text style={detailsStyles.detailsLabel}> Types: </Text>
+        <View style={{ gap: 15 }}>
+          <View style={[globalStyles.typeRow]}>
+            <View style={[globalStyles.center, { flex: 1 }]}>
+              <Text style={detailsStyles.detailsValue}>
+                {pokemon.height / 10} m
+              </Text>
+              <Text style={detailsStyles.detailsLabel}> Height </Text>
+            </View>
 
-          {pokemon.types.map((type) => (
-            <Text key={type.type.name}>{type.type.name} </Text>
-          ))}
-        </Text>
+            <View style={[globalStyles.center, { flex: 1 }]}>
+              <Text style={detailsStyles.detailsValue}>
+                {pokemon.weight / 10} kg
+              </Text>
+              <Text style={detailsStyles.detailsLabel}> Weight </Text>
+            </View>
+          </View>
 
-        <Text style={detailsStyles.detailsWrap}>
-          <Text style={detailsStyles.detailsLabel}> Height: </Text>
-          {pokemon.height / 10} m
-        </Text>
+          <View style={[globalStyles.typeRow]}>
+            <View style={[globalStyles.center, { flex: 1 }]}>
+              <Text style={detailsStyles.detailsValue}>
+                {pokemon.base_experience}
+              </Text>
+              <Text style={detailsStyles.detailsLabel}> Base Exp</Text>
+            </View>
 
-        <Text style={detailsStyles.detailsWrap}>
-          <Text style={detailsStyles.detailsLabel}> Weight: </Text>
-          {pokemon.weight / 10} kg
-        </Text>
+            <View style={[globalStyles.center, { flex: 1 }]}>
+              <Text style={detailsStyles.detailsValue}>
+                {pokemon.types.map((type) => (
+                  <Text key={type.type.name} style={detailsStyles.detailsValue}>
+                    {type.type.name}{" "}
+                  </Text>
+                ))}
+              </Text>
+              <Text style={detailsStyles.detailsLabel}> Types </Text>
+            </View>
+          </View>
+        </View>
       </View>
-    ),
-    [pokemon],
-  );
+    );
+  }, [pokemon, englishEntry]);
 
   const AbilitiesRoute = useCallback(
     () => (
@@ -189,25 +204,19 @@ const Details = () => {
             onIndexChange={setIndex}
             initialLayout={{ width: layout.width }}
             commonOptions={{
-              labelStyle: {
-                fontSize: 18,
-                fontWeight: "bold",
-              },
+              labelStyle: detailsStyles.tabLabel,
             }}
             renderTabBar={(props) => (
               <TabBar
                 {...props}
-                style={{
-                  backgroundColor:
-                    typeColors[pokemonType as keyof typeof typeColors],
-                  shadowColor: "transparent",
-                }}
-                indicatorStyle={{
-                  backgroundColor: colors.primary,
-                  borderTopRightRadius: index === 1 ? 26 : index === 2 ? 0 : 26,
-                  borderTopLeftRadius: index === 1 ? 26 : index === 2 ? 26 : 0,
-                  height: "100%",
-                }}
+                style={[
+                  detailsStyles.tabBar,
+                  {
+                    backgroundColor:
+                      typeColors[pokemonType as keyof typeof typeColors],
+                  },
+                ]}
+                indicatorStyle={detailsStyles.tabIndicator}
                 activeColor={colors.txtLight}
                 inactiveColor={colors.txt}
               />

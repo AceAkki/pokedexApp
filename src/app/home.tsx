@@ -7,7 +7,7 @@ import {
   ImageBackground,
   Pressable,
   Text,
-  View
+  View,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
@@ -26,7 +26,7 @@ import FontAwesome6 from "@expo/vector-icons/FontAwesome6";
 import type { Pokemon } from "@/types/pokemonType";
 
 export default function Home() {
-  let limit = 8;
+  let limit = 12;
   let [offset, setOffset] = useState<number>(0);
   let [newPokemons, setNewPokemons] = useState<Pokemon[]>([]);
   let { pokemons } = useFetchData({ limit: limit, offset: offset } as any);

@@ -81,7 +81,7 @@ const Details = () => {
       <View style={[detailsStyles.detailsTab]}>
         <Text style={detailsStyles.detailsWrap}>{formattedTxt}</Text>
 
-        <View style={{ gap: 15 }}>
+        <View style={{ gap: 15, paddingBottom:20 }}>
           <View style={[globalStyles.typeRow]}>
             <View style={[globalStyles.center, { flex: 1 }]}>
               <Text style={detailsStyles.detailsValue}>

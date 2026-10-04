@@ -47,7 +47,7 @@ const detailsStyles = StyleSheet.create({
   },
   tabBar: {
     shadowColor: "transparent",
-    marginVertical: 10,
+    marginVertical: 15,
     marginHorizontal: 40,
   },
   tabIndicator: {
@@ -64,29 +64,30 @@ const detailsStyles = StyleSheet.create({
     fontSize: 20,
   },
   detailsTab: {
-    paddingVertical: 20,
+    paddingTop: 5,
+    paddingBottom:10,
     paddingHorizontal: 16,
     marginHorizontal: 15,
     backgroundColor: colors.background,
     borderRadius: 16,
   },
   detailsWrap: {
-    flex: 1,
     fontFamily: "Oswald-Light",
     fontSize: 20,
     textTransform: "capitalize",
     padding: 10,
+    marginVertical: 10,
   },
   detailsLabel: {
     fontFamily: "Oswald-Regular",
-    opacity: 0.8,
+    opacity: 0.5,
     fontSize: 25,
     textTransform: "uppercase",
     paddingRight: 5,
   },
   detailsValue: {
     fontFamily: "Oswald-ExtraLight",
-    fontSize: 30,
+    fontSize: 35,
     paddingRight: 5,
     textTransform: "capitalize",
   },

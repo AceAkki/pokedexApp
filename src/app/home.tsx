@@ -154,8 +154,6 @@ export default function Home() {
           }}
           keyExtractor={(poke) => poke.id.toString()}
         />
-
-        <View></View>
       </SafeAreaView>
     </ImageBackground>
   );

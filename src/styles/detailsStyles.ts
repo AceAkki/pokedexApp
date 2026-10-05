@@ -65,9 +65,10 @@ const detailsStyles = StyleSheet.create({
   },
   detailsTab: {
     paddingTop: 5,
-    paddingBottom:10,
+    paddingBottom: 10,
     paddingHorizontal: 16,
     marginHorizontal: 15,
+    marginBottom: 10,
     backgroundColor: colors.background,
     borderRadius: 16,
   },
@@ -90,6 +91,46 @@ const detailsStyles = StyleSheet.create({
     fontSize: 35,
     paddingRight: 5,
     textTransform: "capitalize",
+  },
+  statsView: {
+    flexDirection: "row",
+    gap: 10,
+    padding: 5,
+    alignItems: "center",
+    justifyContent: "flex-start",
+  },
+  statsName: {
+    flex: 1,
+    fontFamily: "Oswald-Regular",
+    fontSize: 20,
+    textTransform: "uppercase",
+  },
+  statValue: {
+    fontFamily: "Oswald-ExtraLight",
+    fontSize: 15,
+  },
+  abilityView: {
+    paddingVertical: 5,
+  },
+  abilitiesHeader: {
+    flexDirection: "row",
+    gap: 10,
+    paddingVertical: 5,
+    alignItems: "center",
+    justifyContent: "flex-start",
+  },
+  abilityName: {
+    fontFamily: "Oswald-Regular",
+    fontSize: 20,
+    textTransform: "uppercase",
+  },
+  abilityText: {
+    fontFamily: "Oswald-Light",
+    fontSize: 20,
+  },
+  abilityDesc: {
+    fontFamily: "Oswald-Light",
+    fontSize: 15,
   },
 });
 

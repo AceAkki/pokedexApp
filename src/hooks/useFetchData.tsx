@@ -1,4 +1,10 @@
-import type { CompletePokemonData, PokemonSpecies } from "@/types/pokemonType";
+import type {
+  CompletePokemonData,
+  PokemonSpecies,
+  Pokemon,
+  PokemonAbility,
+  AbilitiesData,
+} from "@/types/pokemonType";
 import { useEffect, useState } from "react";
 
 interface hookType {
@@ -33,6 +39,15 @@ const useFetchData = (options: hookType) => {
           id: id,
         });
 
+        const abilitiesData: AbilitiesData[] | null = hasParam
+          ? await Promise.all(
+              data.abilities.map(async (obj: PokemonAbility) => {
+                const data: AbilitiesData = await fetchData(obj.ability.url);
+                return { ...data };
+              }),
+            )
+          : null;
+
         const finalData = !hasParam
           ? await Promise.all(
               data.results.map(async (pokemon: any) => {
@@ -47,12 +62,20 @@ const useFetchData = (options: hookType) => {
               ...data,
               description: detailedData.flavor_text_entries,
               names: detailedData.names,
+              abilitiesEffects: hasParam
+                ? abilitiesData?.map((dt) => dt.effect_entries)
+                : null,
+              abilitiesText: hasParam
+                ? abilitiesData?.map((dt) => dt.flavor_text_entries)
+                : null,
             };
-
+        console.log(finalData);
         !hasParam ? setPokemons(finalData) : setPokemon(finalData);
       }
+      return null;
     } catch (error) {
       console.log(error);
+      return null;
     }
   }
 
@@ -67,11 +90,26 @@ const useFetchData = (options: hookType) => {
         const data = await response.json();
         return data;
       }
+      return null;
     } catch (error) {
       console.log(error);
+      return null;
     }
   }
 
+  async function fetchData(fetchURL: string) {
+    try {
+      const response = await fetch(fetchURL);
+      if (response.ok) {
+        const data = await response.json();
+        return data;
+      }
+      return null;
+    } catch (error) {
+      console.log(error);
+      return null;
+    }
+  }
   return {
     pokemons,
     pokemon,

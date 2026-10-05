@@ -80,9 +80,46 @@ export interface PokemonSpecies {
   }>;
 }
 
+export interface AbilitiesData {
+  id: number;
+  name: string;
+  is_main_series: boolean;
+  generation: {
+    name: string;
+    url: string;
+  };
+  names: Array<{
+    name: string;
+    language: { name: string; url: string };
+  }>;
+  effect_entries: Array<{
+    effect: string;
+    short_effect: string;
+    language: { name: string; url: string };
+  }>;
+  flavor_text_entries: Array<{
+    flavor_text: string;
+    language: { name: string; url: string };
+    version_group: {
+      name: string;
+      url: string;
+    };
+  }>;
+  pokemon: Array<{
+    is_hidden: boolean;
+    slot: number;
+    pokemon: {
+      name: string;
+      url: string;
+    };
+  }>;
+}
+
 export type CompletePokemonData = Pokemon & {
   description: PokemonSpecies["flavor_text_entries"];
   names: PokemonSpecies["names"];
+  abilitiesEffects: AbilitiesData["effect_entries"][];
+  abilitiesText: AbilitiesData["flavor_text_entries"][];
 };
 
 /* ---------- API ---------- */

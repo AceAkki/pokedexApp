@@ -5,6 +5,7 @@ import {
   Dimensions,
   Image,
   ImageBackground,
+  ScrollView,
   Text,
   View,
   useWindowDimensions,
@@ -44,28 +45,11 @@ const Details = () => {
   }
 
   let pokemonType = pokemon.types[0].type.name;
+  let pokemonColor = typeColors[pokemonType as keyof typeof typeColors];
   let imageSrc = pokemon.sprites.other["official-artwork"]
     .front_default as string;
   const englishEntry = pokemon.description.find(
     (entry) => entry.language.name === "en",
-  );
-
-  const StatsRoute = useCallback(
-    () => (
-      <View style={detailsStyles.detailsTab}>
-        {pokemon.stats.map((stat) => (
-          <View key={stat.stat.name}>
-            <Text>{stat.stat.name}</Text>
-            <Progress.Bar progress={stat.base_stat / 100} />
-            {/* import * as Progress from 'react-native-progress';
-            
-             */}
-            <Text>{stat.base_stat}</Text>
-          </View>
-        ))}
-      </View>
-    ),
-    [pokemon],
   );
 
   const AboutRoute = useCallback(() => {
@@ -78,10 +62,10 @@ const Details = () => {
       : "";
 
     return (
-      <View style={[detailsStyles.detailsTab]}>
+      <ScrollView style={[detailsStyles.detailsTab]}>
         <Text style={detailsStyles.detailsWrap}>{formattedTxt}</Text>
 
-        <View style={{ gap: 15, paddingBottom:20 }}>
+        <View style={{ gap: 15, paddingBottom: 20 }}>
           <View style={[globalStyles.typeRow]}>
             <View style={[globalStyles.center, { flex: 1 }]}>
               <Text style={detailsStyles.detailsValue}>
@@ -118,17 +102,59 @@ const Details = () => {
             </View>
           </View>
         </View>
-      </View>
+      </ScrollView>
     );
   }, [pokemon, englishEntry]);
 
+  const StatsRoute = useCallback(
+    () => (
+      <ScrollView style={detailsStyles.detailsTab}>
+        {pokemon.stats.map((stat) => (
+          <View key={stat.stat.name} style={detailsStyles.statsView}>
+            <Text style={detailsStyles.statsName}>{stat.stat.name}</Text>
+            <Progress.Bar
+              progress={stat.base_stat / 100}
+              color={pokemonColor}
+              height={15}
+              animationConfig={{ duration: 500, bounciness: 0 }}
+              animationType="spring"
+            />
+            {/* import * as Progress from 'react-native-progress';
+
+             */}
+            <Text style={detailsStyles.statValue}>{stat.base_stat}</Text>
+          </View>
+        ))}
+      </ScrollView>
+    ),
+    [pokemon, pokemonColor],
+  );
+
   const AbilitiesRoute = useCallback(
     () => (
-      <View style={detailsStyles.detailsTab}>
-        {pokemon.abilities.map((ability) => (
-          <Text key={ability.ability.name}>{ability.ability.name} </Text>
-        ))}
-      </View>
+      <ScrollView style={detailsStyles.detailsTab}>
+        {pokemon.abilities.map((ability, index) => {
+          let effect = pokemon.abilitiesEffects[index].find(
+            (obj) => obj.language.name === "en",
+          );
+          let text = pokemon.abilitiesText[index].find(
+            (obj) => obj.language.name === "en",
+          );
+          return (
+            <View key={ability.ability.name} style={detailsStyles.abilityView}>
+              <View style={detailsStyles.abilitiesHeader}>
+                <Text style={detailsStyles.abilityName}>
+                  {ability.ability.name} :
+                </Text>
+                <Text style={detailsStyles.abilityText}>
+                  {text?.flavor_text}
+                </Text>
+              </View>
+              <Text style={detailsStyles.abilityDesc}>{effect?.effect}</Text>
+            </View>
+          );
+        })}
+      </ScrollView>
     ),
     [pokemon],
   );
@@ -149,13 +175,13 @@ const Details = () => {
     <SafeAreaView
       style={{
         flex: 1,
-        backgroundColor: typeColors[pokemonType as keyof typeof typeColors],
+        backgroundColor: pokemonColor,
       }}
     >
       <View
         style={{
           flex: 1,
-          backgroundColor: typeColors[pokemonType as keyof typeof typeColors],
+          backgroundColor: pokemonColor,
           borderRadius: 12,
         }}
       >
@@ -212,8 +238,7 @@ const Details = () => {
                 style={[
                   detailsStyles.tabBar,
                   {
-                    backgroundColor:
-                      typeColors[pokemonType as keyof typeof typeColors],
+                    backgroundColor: pokemonColor,
                   },
                 ]}
                 indicatorStyle={detailsStyles.tabIndicator}

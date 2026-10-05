@@ -62,6 +62,8 @@ const detailsStyles = StyleSheet.create({
   tabLabel: {
     fontFamily: "Oswald-Medium",
     fontSize: 20,
+    margin:0,
+    padding:0
   },
   detailsTab: {
     paddingTop: 5,

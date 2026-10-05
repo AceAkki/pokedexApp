@@ -69,7 +69,6 @@ const useFetchData = (options: hookType) => {
                 ? abilitiesData?.map((dt) => dt.flavor_text_entries)
                 : null,
             };
-        console.log(finalData);
         !hasParam ? setPokemons(finalData) : setPokemon(finalData);
       }
       return null;

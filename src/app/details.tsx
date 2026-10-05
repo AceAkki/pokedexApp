@@ -238,7 +238,7 @@ const Details = () => {
                 style={[
                   detailsStyles.tabBar,
                   {
-                    backgroundColor: pokemonColor,
+                    backgroundColor: "transparent",
                   },
                 ]}
                 indicatorStyle={detailsStyles.tabIndicator}

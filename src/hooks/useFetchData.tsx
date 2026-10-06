@@ -15,6 +15,7 @@ interface hookType {
 }
 const useFetchData = (options: hookType) => {
   let { name, id, limit = 6, offset = 0 } = options;
+  const [loading, setLoading] = useState<boolean>(false);
   let [pokemons, setPokemons] = useState<CompletePokemonData[]>([]);
   let [pokemon, setPokemon] = useState<CompletePokemonData | null>(null);
 
@@ -29,6 +30,7 @@ const useFetchData = (options: hookType) => {
       : id
         ? `https://pokeapi.co/api/v2/pokemon/${id}`
         : `https://pokeapi.co/api/v2/pokemon/?limit=${limit}&offset=${offset}`;
+    setLoading(true);
     try {
       const response = await fetch(url);
       if (response.ok) {
@@ -75,6 +77,8 @@ const useFetchData = (options: hookType) => {
     } catch (error) {
       console.log(error);
       return null;
+    } finally {
+      setLoading(false);
     }
   }
 
@@ -112,6 +116,7 @@ const useFetchData = (options: hookType) => {
   return {
     pokemons,
     pokemon,
+    loading,
   };
 };
 export default useFetchData;

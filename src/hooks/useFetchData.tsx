@@ -36,10 +36,10 @@ const useFetchData = (options: hookType) => {
       if (response.ok) {
         const data = await response.json();
 
-        const detailedData: PokemonSpecies = await fetchPokemonDetails({
-          name: name,
-          id: id,
-        });
+        const urlPokemonDetails = name
+      ? `https://pokeapi.co/api/v2/pokemon-species/${name}`
+      : `https://pokeapi.co/api/v2/pokemon-species/${id}`;
+        const detailedData: PokemonSpecies = await fetchData(urlPokemonDetails);
 
         const abilitiesData: AbilitiesData[] | null = hasParam
           ? await Promise.all(
@@ -82,23 +82,23 @@ const useFetchData = (options: hookType) => {
     }
   }
 
-  async function fetchPokemonDetails({ name, id }: hookType) {
-    const url = name
-      ? `https://pokeapi.co/api/v2/pokemon-species/${name}`
-      : `https://pokeapi.co/api/v2/pokemon-species/${id}`;
+  // async function fetchPokemonDetails({ name, id }: hookType) {
+  //   const url = name
+  //     ? `https://pokeapi.co/api/v2/pokemon-species/${name}`
+  //     : `https://pokeapi.co/api/v2/pokemon-species/${id}`;
 
-    try {
-      const response = await fetch(url);
-      if (response.ok) {
-        const data = await response.json();
-        return data;
-      }
-      return null;
-    } catch (error) {
-      console.log(error);
-      return null;
-    }
-  }
+  //   try {
+  //     const response = await fetch(url);
+  //     if (response.ok) {
+  //       const data = await response.json();
+  //       return data;
+  //     }
+  //     return null;
+  //   } catch (error) {
+  //     console.log(error);
+  //     return null;
+  //   }
+  // }
 
   async function fetchData(fetchURL: string) {
     try {

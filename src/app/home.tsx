@@ -60,6 +60,7 @@ export default function Home() {
     }
   };
 
+  // renders pokemon cards
   const renderItem = ({ item }: { item: Pokemon }) => {
     let type = item.types[0].type.name;
     let imageSrc = item.sprites.other["official-artwork"]
@@ -114,6 +115,7 @@ export default function Home() {
     );
   };
 
+  // renders footer of flatlist - activity indicator
   const renderFooter = () => {
     if (!loading) return null;
     return (

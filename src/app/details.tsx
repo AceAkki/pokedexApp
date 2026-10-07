@@ -207,8 +207,8 @@ const Details = () => {
             resizeMode="cover"
             imageStyle={{
               opacity: 0.3,
-              width: 250,
-              height: 250,
+              width: 200,
+              height: 200,
               position: "absolute",
               right: 0,
               left: "auto",

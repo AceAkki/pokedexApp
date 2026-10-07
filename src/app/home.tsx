@@ -5,7 +5,6 @@ import {
   FlatList,
   Image,
   ImageBackground,
-  Pressable,
   Text,
   View,
 } from "react-native";
@@ -36,7 +35,14 @@ export default function Home() {
 
   useEffect(() => {
     if (pokemons.length) {
-      setNewPokemons((prev) => [...prev, ...pokemons]);
+      setNewPokemons((prev) => {
+        const seenIds = new Set(prev.map((pokemon) => pokemon.id));
+        const uniqueNewPokemons = pokemons.filter(
+          (pokemon) => !seenIds.has(pokemon.id),
+        );
+
+        return [...prev, ...uniqueNewPokemons];
+      });
     }
   }, [pokemons]);
 

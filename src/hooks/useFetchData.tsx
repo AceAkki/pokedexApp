@@ -82,24 +82,6 @@ const useFetchData = (options: hookType) => {
     }
   }
 
-  // async function fetchPokemonDetails({ name, id }: hookType) {
-  //   const url = name
-  //     ? `https://pokeapi.co/api/v2/pokemon-species/${name}`
-  //     : `https://pokeapi.co/api/v2/pokemon-species/${id}`;
-
-  //   try {
-  //     const response = await fetch(url);
-  //     if (response.ok) {
-  //       const data = await response.json();
-  //       return data;
-  //     }
-  //     return null;
-  //   } catch (error) {
-  //     console.log(error);
-  //     return null;
-  //   }
-  // }
-
   async function fetchData(fetchURL: string) {
     try {
       const response = await fetch(fetchURL);

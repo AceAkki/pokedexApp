@@ -150,7 +150,7 @@ export default function Home() {
             paddingBottom: 50,
           }}
           onEndReached={handleLoadMore}
-          onEndReachedThreshold={0.6} // Triggers when 50% from the bottom of the visible list
+          onEndReachedThreshold={0.5} // Triggers when 50% from the bottom of the visible list
           ListFooterComponent={renderFooter}
         />
       </SafeAreaView>
